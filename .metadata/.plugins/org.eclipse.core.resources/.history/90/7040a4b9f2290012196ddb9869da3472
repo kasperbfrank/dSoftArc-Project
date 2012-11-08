@@ -1,7 +1,6 @@
 package hotciv.test;
 
 import hotciv.framework.*;
-import hotciv.standard.CityImpl;
 import hotciv.standard.GameImpl;
 
 import org.junit.*;
@@ -169,31 +168,13 @@ public class TestAlphaCiv {
   
   @Test
   public void endOfRoundIncreasesProductionBy6(){
-	  CityImpl c = (CityImpl) game.getCityAt(new Position(1,1));
+	  City c = game.getCityAt(new Position(1,1));
 	  
 	  //Play 1 rounds of sick and action-packed civilization
 	  game.endOfTurn();
 	  game.endOfTurn();
 	  
-	  assertEquals("Production of cities should now have increased by 6", 6, c.getMoney());
-  }
-  
-  @Test
-  public void produceUnitAndDeductPrice(){
-	  CityImpl c = (CityImpl) game.getCityAt(new Position(1,1));
-	  
-	  //Play 2 rounds
-	  game.endOfTurn();
-	  game.endOfTurn();
-	  game.endOfTurn();
-	  game.endOfTurn();
-	  
-	  game.changeProductionInCityAt(new Position(1,1), GameConstants.ARCHER);
-	  
-	  assertEquals("A red archer should be in production", GameConstants.ARCHER, c.getProduction());
-	  
-	  //Since price of archer is 10 and money after 2 rounds is 12 money should be 2 after starting archer production
-	  assertEquals("Money should be 2 after producing Archer", 2, c.getMoney());
+	  assertEquals("Production of cities should now have increased by 6", 6, c.getProduction());
   }
   
   @Test

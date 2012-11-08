@@ -2,4 +2,6 @@
 <qualifiedTypeNameHistroy>
 <fullyQualifiedTypeName name="hotciv.framework.Unit"/>
 <fullyQualifiedTypeName name="hotciv.framework.Position"/>
+<fullyQualifiedTypeName name="hotciv.framework.City"/>
+<fullyQualifiedTypeName name="hotciv.standard.CityImpl"/>
 </qualifiedTypeNameHistroy>

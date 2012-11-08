@@ -31,14 +31,11 @@ public class GameImpl implements Game {
 	private ArrayList<Unit> unitList = new ArrayList();
 	private int age;
 	private Player winner;
-	private int archerCost = 10;
-	private int legionCost = 5;
-	private int settlerCost = 15;
 	
 	//Position.
 	private Unit[][] unitArray = new Unit[16][16];
 	private Tile[][] tileArray = new Tile[16][16];
-	private CityImpl[][] cityArray = new CityImpl[16][16];
+	private City[][] cityArray = new City[16][16];
 	
 	public GameImpl(Player p1, Player p2){
 		age = -4000;
@@ -140,8 +137,7 @@ public class GameImpl implements Game {
 		  for (int i = 0; i < cityArray.length; i++) {
 	            for (int j = 0; j < cityArray[i].length; j++) {
 	                if (cityArray[i][j] != null){
-	                	CityImpl c = cityArray[i][j];
-	                	c.setMoney(c.getMoney() + 6);
+	                	
 	                }
 	            }
 		  }
@@ -149,25 +145,6 @@ public class GameImpl implements Game {
   }
   
   public void changeWorkForceFocusInCityAt( Position p, String balance ) {}
-  public void changeProductionInCityAt( Position p, String unitType ) {
-	  CityImpl c = (CityImpl) this.getCityAt(p);
-	  
-	  if (unitType.equals(GameConstants.ARCHER)){
-		  if (c.getMoney() >= archerCost){
-			  c.setProduction(GameConstants.ARCHER);
-			  c.setMoney(c.getMoney() - archerCost);
-		  }  
-	  } else if (unitType.equals(GameConstants.LEGION)){
-		  if (c.getMoney() >= legionCost){
-			  c.setProduction(GameConstants.LEGION);
-			  c.setMoney(c.getMoney() - legionCost);
-		  }  
-	  } else if (unitType.equals(GameConstants.SETTLER)){
-		  if (c.getMoney() >= settlerCost){
-			  c.setProduction(GameConstants.SETTLER);
-			  c.setMoney(c.getMoney() - settlerCost);
-		  }  
-	  }
-  }
+  public void changeProductionInCityAt( Position p, String unitType ) {}
   public void performUnitActionAt( Position p ) {}
 }

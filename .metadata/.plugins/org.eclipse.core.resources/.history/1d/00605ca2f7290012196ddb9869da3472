@@ -192,8 +192,7 @@ public class TestAlphaCiv {
 	  
 	  assertEquals("A red archer should be in production", GameConstants.ARCHER, c.getProduction());
 	  
-	  //Since price of archer is 10 and money after 2 rounds is 12 money should be 2 after starting archer production
-	  assertEquals("Money should be 2 after producing Archer", 2, c.getMoney());
+	  
   }
   
   @Test

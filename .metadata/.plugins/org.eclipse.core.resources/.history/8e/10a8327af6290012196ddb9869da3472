@@ -155,17 +155,14 @@ public class GameImpl implements Game {
 	  if (unitType.equals(GameConstants.ARCHER)){
 		  if (c.getMoney() >= archerCost){
 			  c.setProduction(GameConstants.ARCHER);
-			  c.setMoney(c.getMoney() - archerCost);
 		  }  
 	  } else if (unitType.equals(GameConstants.LEGION)){
 		  if (c.getMoney() >= legionCost){
 			  c.setProduction(GameConstants.LEGION);
-			  c.setMoney(c.getMoney() - legionCost);
 		  }  
 	  } else if (unitType.equals(GameConstants.SETTLER)){
 		  if (c.getMoney() >= settlerCost){
 			  c.setProduction(GameConstants.SETTLER);
-			  c.setMoney(c.getMoney() - settlerCost);
 		  }  
 	  }
   }

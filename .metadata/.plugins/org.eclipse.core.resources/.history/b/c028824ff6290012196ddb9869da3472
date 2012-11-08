@@ -7,7 +7,6 @@ public class CityImpl implements City{
 	
 	private Player owner;
 	private int money;
-	private String production;
 	
 	public CityImpl(Player owner){
 		this.owner = owner;
@@ -28,7 +27,7 @@ public class CityImpl implements City{
 	@Override
 	public String getProduction() {
 		// TODO Auto-generated method stub
-		return production;
+		return null;
 	}
 
 	@Override
@@ -43,10 +42,6 @@ public class CityImpl implements City{
 	
 	public void setMoney(int money){
 		this.money = money;
-	}
-	
-	public void setProduction(String prod){
-		this.production = prod;
 	}
 
 }
