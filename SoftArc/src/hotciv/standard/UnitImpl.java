@@ -7,12 +7,10 @@ import hotciv.framework.Unit;
 public class UnitImpl implements Unit{
 
 	private Player owner;
-	private Position p;
 	private String type;
 	
-	public UnitImpl(Player owner, Position p, String type){
+	public UnitImpl(Player owner, String type){
 		this.owner = owner;
-		this.p = p;
 		this.type = type;
 	}
 	

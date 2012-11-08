@@ -1,5 +1,6 @@
 package hotciv.standard;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -29,6 +30,10 @@ public class GameImpl implements Game {
 	private Iterator<Player> playerIterator;
 	private ArrayList<Unit> unitList = new ArrayList();
 	
+	//Position.
+	private Unit[][] unitArray = new Unit[16][16];
+	private Tile[][] tileArray = new Tile[16][16];
+	
 	public GameImpl(Player p1, Player p2){
 		playerList.add(p1);
 		playerList.add(p2);
@@ -38,29 +43,30 @@ public class GameImpl implements Game {
 		playerIterator = playerList.iterator();
 		playerIterator.next();
 		
-		unitList.add(new UnitImpl(Player.RED, new Position(2,0), GameConstants.ARCHER));
-		unitList.add(new UnitImpl(Player.BLUE, new Position(3,2), GameConstants.LEGION));
-		unitList.add(new UnitImpl(Player.RED, new Position(4,3), GameConstants.SETTLER));
+		tileArray[1][0] = new TileImpl(new Position(1,0), GameConstants.OCEANS);
+		tileArray[0][1] = new TileImpl(new Position(0,1), GameConstants.HILLS);
+		tileArray[2][2] = new TileImpl(new Position(2,2), GameConstants.MOUNTAINS);
+
+		unitArray[2][0] = new UnitImpl(Player.RED, GameConstants.ARCHER);
+		unitArray[3][2] = new UnitImpl(Player.BLUE, GameConstants.LEGION);
+		unitArray[4][3] = new UnitImpl(Player.RED, GameConstants.SETTLER);
 		
 	}
 	
   public Tile getTileAt( Position p ) {
-	  return (Tile) new TileImpl(p);
+	  Tile t = tileArray[p.getRow()][p.getColumn()];
+	  
+	  if(t == null){
+		  t = new TileImpl(new Position(p.getRow(), p.getColumn()), GameConstants.PLAINS);
+	  }
+	  
+	  return t;
   }
   
   public Unit getUnitAt( Position p ) {
-	  Unit unit = null;
-	  
-	  if(p.equals(new Position(2,0))){
-		unit = unitList.get(0);
-	  }else if(p.equals(new Position(3,2))){
-		unit = unitList.get(1);
-	  }else if(p.equals(new Position(4,3))){
-		unit = unitList.get(2);
-	  }
-	  
-	  return unit;
+	  return unitArray[p.getRow()][p.getColumn()];
   }
+  
   public City getCityAt( Position p ) { return null; }
   
   public Player getPlayerInTurn() {
