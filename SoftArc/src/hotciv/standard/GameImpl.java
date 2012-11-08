@@ -1,5 +1,8 @@
 package hotciv.standard;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import hotciv.framework.*;
 
 /** Skeleton implementation of HotCiv.
@@ -20,16 +23,47 @@ import hotciv.framework.*;
 */
 
 public class GameImpl implements Game {
-  public Tile getTileAt( Position p ) { return null; }
+	
+	private ArrayList<Player> playerList = new ArrayList();
+	private Player playerInTurn;
+	private Iterator<Player> playerIterator;
+	
+	public GameImpl(Player p1, Player p2){
+		playerList.add(p1);
+		playerList.add(p2);
+		
+		playerInTurn = p1;
+		
+		playerIterator = playerList.iterator();
+		playerIterator.next();
+	}
+	
+  public Tile getTileAt( Position p ) {
+	  return (Tile) new TileImpl(p);
+  }
+  
   public Unit getUnitAt( Position p ) { return null; }
   public City getCityAt( Position p ) { return null; }
-  public Player getPlayerInTurn() { return null; }
+  
+  public Player getPlayerInTurn() {
+	  return playerInTurn; 
+  }
+  
   public Player getWinner() { return null; }
   public int getAge() { return 0; }
   public boolean moveUnit( Position from, Position to ) {
     return false;
   }
-  public void endOfTurn() {}
+  
+  public void endOfTurn() {
+	  if(playerIterator.hasNext()){
+		  playerInTurn = playerIterator.next();
+	  }else{
+		  playerIterator = playerList.iterator();
+		  playerInTurn = playerIterator.next();
+	  }
+  }
+  
   public void changeWorkForceFocusInCityAt( Position p, String balance ) {}
   public void changeProductionInCityAt( Position p, String unitType ) {}
   public void performUnitActionAt( Position p ) {}
