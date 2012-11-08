@@ -75,7 +75,19 @@ public class GameImpl implements Game {
   
   public Player getWinner() { return null; }
   public int getAge() { return 0; }
+  
   public boolean moveUnit( Position from, Position to ) {
+	  
+	  Unit u = unitArray[from.getRow()][from.getColumn()];
+	  
+	if(!tileArray[to.getRow()][to.getColumn()].getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner())){
+		
+		unitArray[to.getRow()][to.getColumn()] = u;
+		unitArray[from.getRow()][from.getColumn()] = null;
+		
+		return true;
+	}
+	
     return false;
   }
   

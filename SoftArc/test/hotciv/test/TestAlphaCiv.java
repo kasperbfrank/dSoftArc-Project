@@ -102,12 +102,18 @@ public class TestAlphaCiv {
   
   @Test
   public void unitCannotMoveOverMountain(){
-	  Position p = new Position(2,2);
+	  Position to = new Position(2,2);
+	  Position from = new Position(2,0);
 	  
-	  Unit u = game.getUnitAt(p);
-	  Tile t = game.getTileAt(p);
-	  assertEquals("Tile (2,2) should be Mountains", GameConstants.MOUNTAINS, t.getTypeString());
-	  assertNull("Unit should not be able to stand on Mountains", null);
+	  assertFalse("Cannot move to mountains at (2,2)", game.moveUnit(from, to));
+  }
+  
+  @Test
+  public void onlyPlayerInTurnCanMovePlayersUnits(){
+	  Position to = new Position(2,1);
+	  Position from = new Position(3,2);
+	  
+	  assertFalse("RED cannot move BLUE's units", game.moveUnit(from, to));
   }
   
 }
