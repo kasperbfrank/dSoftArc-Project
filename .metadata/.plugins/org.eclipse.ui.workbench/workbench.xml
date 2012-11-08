@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="39" version="2.0">
 <workbenchAdvisor/>
-<window height="1114" width="1477" x="136" y="78">
+<window height="1125" maximized="true" width="1889" x="9" y="22">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -36,25 +36,50 @@
 <part id="1"/>
 <part id="2"/>
 <part id="3"/>
+<part id="4"/>
+<part id="5"/>
+<part id="6"/>
+<part id="7"/>
+<part id="8"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestAlphaCiv.java" partName="TestAlphaCiv.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/test/hotciv/test/TestAlphaCiv.java" title="TestAlphaCiv.java" tooltip="SoftArc/test/hotciv/test/TestAlphaCiv.java" workbook="DefaultEditorWorkbook">
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestAlphaCiv.java" partName="TestAlphaCiv.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/test/hotciv/test/TestAlphaCiv.java" title="TestAlphaCiv.java" tooltip="SoftArc/test/hotciv/test/TestAlphaCiv.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/test/hotciv/test/TestAlphaCiv.java"/>
-<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="387" selectionTopPixel="0"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="3701" selectionTopPixel="927"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GameImpl.java" partName="GameImpl.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/standard/GameImpl.java" title="GameImpl.java" tooltip="SoftArc/src/hotciv/standard/GameImpl.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/standard/GameImpl.java"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" partName="Game.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/framework/Game.java" title="Game.java" tooltip="SoftArc/src/hotciv/framework/Game.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/framework/Game.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor activePart="true" focus="true" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GameImpl.java" partName="GameImpl.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/standard/GameImpl.java" title="GameImpl.java" tooltip="SoftArc/src/hotciv/standard/GameImpl.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/standard/GameImpl.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="1276" selectionTopPixel="333"/>
 </editor>
 <editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="City.java" partName="City.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/framework/City.java" title="City.java" tooltip="SoftArc/src/hotciv/framework/City.java" workbook="DefaultEditorWorkbook">
 <input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/framework/City.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
 </editor>
-<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" partName="Game.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/framework/Game.java" title="Game.java" tooltip="SoftArc/src/hotciv/framework/Game.java" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/framework/Game.java"/>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Unit.java" partName="Unit.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/framework/Unit.java" title="Unit.java" tooltip="SoftArc/src/hotciv/framework/Unit.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/framework/Unit.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="13" selectionOffset="924" selectionTopPixel="102"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TileImpl.java" partName="TileImpl.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/standard/TileImpl.java" title="TileImpl.java" tooltip="SoftArc/src/hotciv/standard/TileImpl.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/standard/TileImpl.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="216" selectionOffset="466" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UnitImpl.java" partName="UnitImpl.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/standard/UnitImpl.java" title="UnitImpl.java" tooltip="SoftArc/src/hotciv/standard/UnitImpl.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/standard/UnitImpl.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="443" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Player.java" partName="Player.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/framework/Player.java" title="Player.java" tooltip="SoftArc/src/hotciv/framework/Player.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/framework/Player.java"/>
 <editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="0"/>
+</editor>
+<editor id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Position.java" partName="Position.java" path="/Users/kasperbfrank/Documents/Developer/Eclipse/workspace/dSoftArc-Project/SoftArc/src/hotciv/framework/Position.java" title="Position.java" tooltip="SoftArc/src/hotciv/framework/Position.java" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/SoftArc/src/hotciv/framework/Position.java"/>
+<editorState selectionHorizontalPixel="0" selectionLength="0" selectionOffset="0" selectionTopPixel="162"/>
 </editor>
 </editors>
 <views>
@@ -88,6 +113,9 @@
 <view id="org.eclipse.datatools.connectivity.DataSourceExplorerNavigator" partName="Data Source Explorer"/>
 <view id="org.eclipse.ui.views.ProblemView" partName="Problems">
 <viewState PRIMARY_SORT_FIELD="org.eclipse.ui.ide.severityAndDescriptionField" categoryGroup="org.eclipse.ui.ide.severity" markerContentGenerator="org.eclipse.ui.ide.problemsGenerator" partName="Problems">
+<expanded>
+<category IMemento.internal.id="Warnings (2 items)"/>
+</expanded>
 <columnWidths org.eclipse.ui.ide.locationField="90" org.eclipse.ui.ide.markerType="90" org.eclipse.ui.ide.pathField="120" org.eclipse.ui.ide.resourceField="90" org.eclipse.ui.ide.severityAndDescriptionField="300"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.severityAndDescriptionField"/>
 <visible IMemento.internal.id="org.eclipse.ui.ide.resourceField"/>
@@ -351,7 +379,7 @@
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory"/>
 </folder>
 </info>
-<info part="org.eclipse.ui.editorss" ratio="0.24982981" ratioLeft="367" ratioRight="1102" relationship="2" relative="left"/>
+<info part="org.eclipse.ui.editorss" ratio="0.16762704" ratioLeft="320" ratioRight="1589" relationship="2" relative="left"/>
 <info folder="true" part="bottom" ratio="0.751462" ratioLeft="771" ratioRight="255" relationship="4" relative="org.eclipse.ui.editorss">
 <folder activePageID="org.eclipse.ui.console.ConsoleView" appearance="2" expanded="2">
 <page content="org.eclipse.ui.views.ProblemView" label="Problems"/>
@@ -395,50 +423,164 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/hotciv-tdd-start/test/hotciv/standard/TestAlphaCiv.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/hotciv-tdd-start/test/hotciv/test/TestAlphaCiv.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/softArc/src/hotciv/standard/GameImpl.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/softArc/test/hotciv/test/TestAlphaCiv.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/softArc/src/hotciv/standard/GameImpl.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/test/hotciv/test/TestAlphaCiv.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/standard/GameImpl.java"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/framework/City.java"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/framework/Game.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/standard/GameImpl.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/framework/Unit.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/standard/UnitImpl.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/framework/Player.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/standard/TileImpl.java"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" path="/SoftArc/src/hotciv/framework/Position.java"/>
 </editors>
-<item historyLabel="TestAlphaCiv.java" index="0">
+<item historyLabel="UnitImpl.java" index="4">
+<position info="not_deleted" x="343" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="Unit.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="TestAlphaCiv.java" index="1">
-<position info="not_deleted" x="144" y="0"/>
+<item historyLabel="Player.java" index="5">
+<position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="TestAlphaCiv.java" index="1">
+<item historyLabel="UnitImpl.java" index="4">
+<position info="not_deleted" x="343" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="Game.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
 <item historyLabel="GameImpl.java" index="2">
-<position info="not_deleted" x="993" y="0"/>
+<position/>
 </item>
-<item historyLabel="TestAlphaCiv.java" index="3">
-<position info="not_deleted" x="839" y="0"/>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="2682" y="0"/>
 </item>
-<item historyLabel="GameImpl.java" index="4"/>
-<item historyLabel="TestAlphaCiv.java" index="5">
-<position info="not_deleted" x="98" y="0"/>
+<item historyLabel="UnitImpl.java" index="4">
+<position info="not_deleted" x="343" y="0"/>
 </item>
-<item historyLabel="GameImpl.java" index="6">
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="Unit.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="GameImpl.java" index="4"/>
-<item historyLabel="GameImpl.java" index="6">
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="Unit.java" index="3">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="City.java" index="7">
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="Game.java" index="1">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item historyLabel="Game.java" index="8">
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="UnitImpl.java" index="4">
+<position info="not_deleted" x="343" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="TileImpl.java" index="6">
+<position info="not_deleted" x="682" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="UnitImpl.java" index="4">
+<position info="not_deleted" x="343" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="2682" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="UnitImpl.java" index="4">
+<position info="not_deleted" x="343" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position info="not_deleted" x="1401" y="0"/>
+</item>
+<item historyLabel="TileImpl.java" index="6">
+<position info="not_deleted" x="466" y="216"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="2757" y="0"/>
+</item>
+<item historyLabel="Unit.java" index="3">
+<position info="not_deleted" x="924" y="13"/>
+</item>
+<item historyLabel="UnitImpl.java" index="4">
+<position info="not_deleted" x="443" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="2757" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3139" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3366" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3231" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3366" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3427" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3628" y="0"/>
+</item>
+<item historyLabel="Position.java" index="7">
 <position info="not_deleted" x="0" y="0"/>
 </item>
-<item active="true" historyLabel="TestAlphaCiv.java" index="5">
-<position info="not_deleted" x="98" y="0"/>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3628" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3532" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3701" y="0"/>
+</item>
+<item historyLabel="Position.java" index="7">
+<position info="not_deleted" x="0" y="0"/>
+</item>
+<item historyLabel="TestAlphaCiv.java" index="0">
+<position info="not_deleted" x="3701" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position info="not_deleted" x="1450" y="0"/>
+</item>
+<item historyLabel="GameImpl.java" index="2">
+<position info="not_deleted" x="1799" y="75"/>
+</item>
+<item active="true" historyLabel="GameImpl.java" index="2">
+<position info="not_deleted" x="1242" y="54"/>
 </item>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
@@ -446,6 +588,14 @@
 <workbenchWindowAdvisor/>
 <actionBarAdvisor/>
 <trimLayout>
+<trimArea IMemento.internal.id="16384">
+<trimItem IMemento.internal.id="left"/>
+</trimArea>
+<trimArea IMemento.internal.id="131072">
+<trimItem IMemento.internal.id="right"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.internal.ViewStack@2e7ccb74"/>
+<trimItem IMemento.internal.id="org.eclipse.ui.editorss"/>
+</trimArea>
 <trimArea IMemento.internal.id="128">
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.WorkbenchWindow.topBar"/>
 <trimItem IMemento.internal.id="org.eclipse.mylyn.tasks.ui.trim.container"/>
@@ -454,18 +604,34 @@
 <trimItem IMemento.internal.id="org.eclise.ui.internal.FastViewBar"/>
 <trimItem IMemento.internal.id="org.eclipse.jface.action.StatusLineManager"/>
 <trimItem IMemento.internal.id="org.eclipse.ui.internal.progress.ProgressRegion"/>
+<trimItem IMemento.internal.id="bottom"/>
 </trimArea>
 </trimLayout>
 </window>
 <mruList>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" tooltip="SoftArc/src/hotciv/framework/Game.java">
-<persistable path="/SoftArc/src/hotciv/framework/Game.java"/>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Position.java" tooltip="SoftArc/src/hotciv/framework/Position.java">
+<persistable path="/SoftArc/src/hotciv/framework/Position.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Player.java" tooltip="SoftArc/src/hotciv/framework/Player.java">
+<persistable path="/SoftArc/src/hotciv/framework/Player.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="UnitImpl.java" tooltip="SoftArc/src/hotciv/standard/UnitImpl.java">
+<persistable path="/SoftArc/src/hotciv/standard/UnitImpl.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TileImpl.java" tooltip="SoftArc/src/hotciv/standard/TileImpl.java">
+<persistable path="/SoftArc/src/hotciv/standard/TileImpl.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Unit.java" tooltip="SoftArc/src/hotciv/framework/Unit.java">
+<persistable path="/SoftArc/src/hotciv/framework/Unit.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="City.java" tooltip="SoftArc/src/hotciv/framework/City.java">
 <persistable path="/SoftArc/src/hotciv/framework/City.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="GameImpl.java" tooltip="SoftArc/src/hotciv/standard/GameImpl.java">
 <persistable path="/SoftArc/src/hotciv/standard/GameImpl.java"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="Game.java" tooltip="SoftArc/src/hotciv/framework/Game.java">
+<persistable path="/SoftArc/src/hotciv/framework/Game.java"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="org.eclipse.jdt.ui.CompilationUnitEditor" name="TestAlphaCiv.java" tooltip="SoftArc/test/hotciv/test/TestAlphaCiv.java">
 <persistable path="/SoftArc/test/hotciv/test/TestAlphaCiv.java"/>

@@ -29,12 +29,17 @@ public class GameImpl implements Game {
 	private Player playerInTurn;
 	private Iterator<Player> playerIterator;
 	private ArrayList<Unit> unitList = new ArrayList();
+	private int age;
+	private Player winner;
 	
 	//Position.
 	private Unit[][] unitArray = new Unit[16][16];
 	private Tile[][] tileArray = new Tile[16][16];
+	private City[][] cityArray = new City[16][16];
 	
 	public GameImpl(Player p1, Player p2){
+		age = -4000;
+		
 		playerList.add(p1);
 		playerList.add(p2);
 		
@@ -50,6 +55,9 @@ public class GameImpl implements Game {
 		unitArray[2][0] = new UnitImpl(Player.RED, GameConstants.ARCHER);
 		unitArray[3][2] = new UnitImpl(Player.BLUE, GameConstants.LEGION);
 		unitArray[4][3] = new UnitImpl(Player.RED, GameConstants.SETTLER);
+		
+		cityArray[1][1] = new CityImpl(Player.RED);
+		cityArray[4][1] = new CityImpl(Player.BLUE);
 		
 	}
 	
@@ -67,36 +75,72 @@ public class GameImpl implements Game {
 	  return unitArray[p.getRow()][p.getColumn()];
   }
   
-  public City getCityAt( Position p ) { return null; }
+  public City getCityAt( Position p ) { 
+	  return cityArray[p.getRow()][p.getColumn()]; 
+  }
   
   public Player getPlayerInTurn() {
 	  return playerInTurn; 
   }
   
-  public Player getWinner() { return null; }
-  public int getAge() { return 0; }
+  public Player getWinner() {
+	  return winner; 
+  }
+  
+  public int getAge() { 
+	  return age; 
+  }
   
   public boolean moveUnit( Position from, Position to ) {
+	
+	Tile t = getTileAt(to);
+	Unit u = unitArray[from.getRow()][from.getColumn()];
 	  
-	  Unit u = unitArray[from.getRow()][from.getColumn()];
-	  
-	if(!tileArray[to.getRow()][to.getColumn()].getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner())){
+	if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] == null){
 		
+		//Move path free
 		unitArray[to.getRow()][to.getColumn()] = u;
 		unitArray[from.getRow()][from.getColumn()] = null;
-		
+			
 		return true;
+	} else if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] != null) {
+		//Unit is blocking Tile
+		if(!playerInTurn.equals(unitArray[to.getRow()][to.getColumn()].getOwner())){
+			//You have defeated an enemy!
+			System.out.println("YOU ARE VICTORIOUS!");
+			unitArray[to.getRow()][to.getColumn()] = null;
+			unitArray[to.getRow()][to.getColumn()] = u;
+			return true;
+		} else {
+			//Friendly unit is blocking the Tile
+			return false;
+		}
+	} else {
+		return false;
 	}
-	
-    return false;
   }
   
   public void endOfTurn() {
 	  if(playerIterator.hasNext()){
 		  playerInTurn = playerIterator.next();
 	  }else{
+		  //End of Round
 		  playerIterator = playerList.iterator();
 		  playerInTurn = playerIterator.next();
+		  
+		  this.age += 100;
+		  
+		  if (this.age == -3000){
+			  winner = Player.RED;
+		  }
+		  
+		  for (int i = 0; i < cityArray.length; i++) {
+	            for (int j = 0; j < cityArray[i].length; j++) {
+	                if (cityArray[i][j] != null){
+	                	
+	                }
+	            }
+		  }
 	  }
   }
   

@@ -110,10 +110,103 @@ public class TestAlphaCiv {
   
   @Test
   public void onlyPlayerInTurnCanMovePlayersUnits(){
-	  Position to = new Position(2,1);
-	  Position from = new Position(3,2);
+	  Position to;
+	  Position from;
+	  to = new Position(2,1);
+	  from = new Position(3,2);
 	  
 	  assertFalse("RED cannot move BLUE's units", game.moveUnit(from, to));
+	  
+	  game.endOfTurn();
+	  
+	  to = new Position(2,1);
+	  from = new Position(2,0);
+	  
+	  assertFalse("BLUE cannot move RED's units", game.moveUnit(from, to));
   }
   
+  @Test
+  public void onlyOnePlayerAtTile(){
+	  Position to = new Position(4,3);
+	  Position from = new Position(2,0);
+	  
+	  assertFalse("Unit should not be able to move to another units location", game.moveUnit(from, to));
+  }
+  
+  @Test
+  public void attackerAlwaysWins(){
+	  //Blue Legion
+	  Position to = new Position(3,2);
+	  
+	  //Red Archer
+	  Position from = new Position(2,0);
+	  
+	  //Moving Red Archer to Blue Legion makes the red unit defeat his blue opponent meaning the red player is victorious..
+	  game.moveUnit(from, to);
+	  Player p = game.getUnitAt(new Position(2,0)).getOwner();
+	  
+	  assertEquals("Attacking unit should always win", Player.RED, p);
+  }
+  
+  @Test
+  public void redHasCityAt1_1(){
+	  City c = game.getCityAt(new Position(1,1));
+	  assertEquals("City at position (1,1) is owned by red", Player.RED, c.getOwner());
+  }
+  
+  @Test
+  public void blueHasCityAt1_1(){
+	  City c = game.getCityAt(new Position(4,1));
+	  assertEquals("City at position (4,1) is owned by blue", Player.BLUE, c.getOwner());
+  }
+  
+  @Test
+  public void cityPopulationIsAlways1(){
+	  City c = game.getCityAt(new Position(1,1));
+	  assertEquals("City population is 1", 1, c.getSize());
+  }
+  
+  @Test
+  public void endOfRoundIncreasesProductionBy6(){
+	  City c = game.getCityAt(new Position(1,1));
+	  
+	  //Play 1 rounds of sick and action-packed civilization
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  
+	  assertEquals("Production of cities should now have increased by 6", 6, c.getProduction());
+  }
+  
+  @Test
+  public void gameStartsAtYear4000BC(){
+	  assertEquals("Game should start at year 4000 BC (year -4000)", -4000, game.getAge());
+  }
+  
+  @Test
+  public void endOfRoundAdvancesYearBy100(){
+	  int previousRoundYear = game.getAge();
+	  
+	  //Both players have to end their turn for a round to pass
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  
+	  assertEquals("End of Round should advance year by 100", previousRoundYear + 100, game.getAge());
+  }
+  
+  @Test
+  public void nooneHasWonBefore3000BC(){
+	  assertEquals("Noone should have won before the year 3000 BC (year -3000)", null, game.getWinner());
+  }
+  
+  @Test
+  public void redWinsAtYear3000BC(){
+	  
+	  //Playing 10 rounds of the most fun civilization game ever
+	  for(int i=0; i<20; i++){
+          game.endOfTurn();
+	  }
+	  
+	  //10 rounds later....
+	  assertEquals("Red Player should win at year 3000 BC (year -3000)", Player.RED, game.getWinner());
+  }
 }
