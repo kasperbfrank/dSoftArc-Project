@@ -38,9 +38,9 @@ public class GameImpl implements Game {
 		playerIterator = playerList.iterator();
 		playerIterator.next();
 		
-		unitList.add(new UnitImpl(Player.RED, new Position(2,0), GameConstants.ARCHER));
-		unitList.add(new UnitImpl(Player.BLUE, new Position(3,2), GameConstants.LEGION));
-		unitList.add(new UnitImpl(Player.RED, new Position(4,3), GameConstants.SETTLER));
+		unitList.add(new UnitImpl(Player.RED, new Position(2,0)));
+		unitList.add(new UnitImpl(Player.BLUE, new Position(3,2)));
+		unitList.add(new UnitImpl(Player.RED, new Position(4,3)));
 		
 	}
 	
@@ -49,17 +49,7 @@ public class GameImpl implements Game {
   }
   
   public Unit getUnitAt( Position p ) {
-	  Unit unit = null;
-	  
-	  if(p.equals(new Position(2,0))){
-		unit = unitList.get(0);
-	  }else if(p.equals(new Position(3,2))){
-		unit = unitList.get(1);
-	  }else if(p.equals(new Position(4,3))){
-		unit = unitList.get(2);
-	  }
-	  
-	  return unit;
+	  return null;
   }
   public City getCityAt( Position p ) { return null; }
   

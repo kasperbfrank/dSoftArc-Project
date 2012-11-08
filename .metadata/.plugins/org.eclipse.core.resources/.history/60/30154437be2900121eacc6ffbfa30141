@@ -23,7 +23,6 @@ import static org.junit.Assert.*;
    commercial use, see http://www.baerbak.com/
 */
 public class TestAlphaCiv {
-	private Tile t;
   private Game game;
   /** Fixture for alphaciv testing. */
   @Before
@@ -85,29 +84,8 @@ public class TestAlphaCiv {
   @Test
   public void redHasArcherAndSettlerAtStart(){
 	  Unit u = game.getUnitAt(new Position(2,0));
-	  assertEquals("unit should be an Archer", GameConstants.ARCHER, u.getTypeString());
+	  assertEquals("unit should be an archer", GameConstants.ARCHER, u.getTypeString());
 	  assertEquals("Owner of Archer-unit should be Player.RED", Player.RED, u.getOwner());
-	  
-	  u = game.getUnitAt(new Position(4,3));
-	  assertEquals("unit should be a Settler", GameConstants.SETTLER, u.getTypeString());
-	  assertEquals("Owner of Settler-unit should be Player.RED", Player.RED, u.getOwner());
-  }
-  
-  @Test
-  public void blueHasLegionAtStart(){
-	  Unit u = game.getUnitAt(new Position(3,2));
-	  assertEquals("unit should be a Legion", GameConstants.LEGION, u.getTypeString());
-	  assertEquals("Owner of Legion-unit should be Player.BLUE", Player.BLUE, u.getOwner());
-  }
-  
-  @Test
-  public void unitCannotMoveOverMountain(){
-	  Position p = new Position(2,2);
-	  
-	  Unit u = game.getUnitAt(p);
-	  Tile t = game.getTileAt(p);
-	  assertEquals("Tile (2,2) should be Mountains", GameConstants.MOUNTAINS, t.getTypeString());
-	  assertNull("Unit should not be able to stand on Mountains", null);
   }
   
 }

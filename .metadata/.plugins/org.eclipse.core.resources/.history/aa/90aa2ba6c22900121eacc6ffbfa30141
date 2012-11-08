@@ -38,9 +38,9 @@ public class GameImpl implements Game {
 		playerIterator = playerList.iterator();
 		playerIterator.next();
 		
-		unitList.add(new UnitImpl(Player.RED, new Position(2,0), GameConstants.ARCHER));
-		unitList.add(new UnitImpl(Player.BLUE, new Position(3,2), GameConstants.LEGION));
-		unitList.add(new UnitImpl(Player.RED, new Position(4,3), GameConstants.SETTLER));
+		unitList.add(new UnitImpl(Player.RED, new Position(2,0)));
+		unitList.add(new UnitImpl(Player.BLUE, new Position(3,2)));
+		unitList.add(new UnitImpl(Player.RED, new Position(4,3)));
 		
 	}
 	
