@@ -31,6 +31,7 @@ public class GameImpl implements Game {
 	private ArrayList<Unit> unitList = new ArrayList();
 	private int age;
 	private Player winner;
+	
 	private int archerCost = 10;
 	private int legionCost = 5;
 	private int settlerCost = 15;
@@ -149,6 +150,7 @@ public class GameImpl implements Game {
   }
   
   public void changeWorkForceFocusInCityAt( Position p, String balance ) {}
+  
   public void changeProductionInCityAt( Position p, String unitType ) {
 	  CityImpl c = (CityImpl) this.getCityAt(p);
 	  
@@ -168,6 +170,37 @@ public class GameImpl implements Game {
 			  c.setMoney(c.getMoney() - settlerCost);
 		  }  
 	  }
+	  
+	  UnitImpl u = new UnitImpl(this.playerInTurn, c.getProduction());
+	  
+	  //Place unit on tile, if not already occupied.
+	  if(this.unitArray[p.getRow()][p.getColumn()] == null){
+		  this.unitArray[p.getRow()][p.getColumn()] = u;
+	  }else{
+		  Position[] pArray = this.getTilesAround(p);
+		  for(Position pos : pArray){
+			  if(this.unitArray[pos.getRow()][pos.getColumn()] == null){
+				  this.unitArray[pos.getRow()][pos.getColumn()] = u;
+			  }
+		  }
+	  }
+	   
   }
   public void performUnitActionAt( Position p ) {}
+  
+  private Position[] getTilesAround(Position  p){
+	  Position[] pArray = new Position[8];
+	  
+	  //Get the surrounding tiles.
+	  pArray[0] = new Position(p.getColumn(), p.getRow() - 1);
+	  pArray[1] = new Position(p.getColumn() + 1, p.getRow() - 1);
+	  pArray[2] = new Position(p.getColumn() + 1, p.getRow());
+	  pArray[3] = new Position(p.getColumn() + 1, p.getRow() + 1);
+	  pArray[4] = new Position(p.getColumn(), p.getRow() + 1);
+	  pArray[5] = new Position(p.getColumn() - 1, p.getRow() + 1);
+	  pArray[6] = new Position(p.getColumn() - 1, p.getRow());
+	  pArray[7] = new Position(p.getColumn() - 1, p.getRow() - 1);
+	  
+	  return pArray;
+  }
 }

@@ -24,23 +24,17 @@ import static org.junit.Assert.*;
    commercial use, see http://www.baerbak.com/
 */
 public class TestAlphaCiv {
-	private Tile t;
+  
   private Game game;
   /** Fixture for alphaciv testing. */
   @Before
   public void setUp() {
     game = new GameImpl(Player.RED, Player.BLUE);
   }
-
-  /*@Test
-  public void shouldHaveRedCityAt1_1() {
-    City c = game.getCityAt(new Position(1,1));
-    assertNotNull("There should be a city at (1,1)", c);
-    Player p = c.getOwner();
-    assertEquals( "City at (1,1) should be owned by red",
-      Player.RED, p );
-  }*/
   
+  /**
+   * Player tests.
+   */
   @Test
   public void isRedFirstPlayerInTurn(){
 	  Player p = game.getPlayerInTurn();
@@ -59,6 +53,9 @@ public class TestAlphaCiv {
 	  assertEquals("RED should be in turn 3", Player.RED, p);
   }
   
+  /**
+   * Game world tests.
+   */
   @Test
   public void shouldHaveOceanAt1_0() {
 	  Tile t = game.getTileAt(new Position(1,0));
@@ -83,6 +80,9 @@ public class TestAlphaCiv {
 	  assertEquals("There should be plains at (0,0)", GameConstants.PLAINS, t.getTypeString());
   }
   
+  /**
+   * Unit initialization and control tests.
+   */
   @Test
   public void redHasArcherAndSettlerAtStart(){
 	  Unit u = game.getUnitAt(new Position(2,0));
@@ -134,6 +134,9 @@ public class TestAlphaCiv {
 	  assertFalse("Unit should not be able to move to another units location", game.moveUnit(from, to));
   }
   
+  /**
+   * Attacking tests.
+   */
   @Test
   public void attackerAlwaysWins(){
 	  //Blue Legion
@@ -149,6 +152,9 @@ public class TestAlphaCiv {
 	  assertEquals("Attacking unit should always win", Player.RED, p);
   }
   
+  /**
+   * Game cities tests.
+   */
   @Test
   public void redHasCityAt1_1(){
 	  City c = game.getCityAt(new Position(1,1));
@@ -178,6 +184,9 @@ public class TestAlphaCiv {
 	  assertEquals("Production of cities should now have increased by 6", 6, c.getMoney());
   }
   
+  /**
+   * Unit production tests.
+   */
   @Test
   public void produceUnitAndDeductPrice(){
 	  CityImpl c = (CityImpl) game.getCityAt(new Position(1,1));
@@ -197,6 +206,51 @@ public class TestAlphaCiv {
   }
   
   @Test
+  public void placeUnitAtNonOccupiedTile(){
+	  
+	  Position p = new Position(1,1);
+	  
+	  //Play 2 rounds
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  
+	  game.changeProductionInCityAt(new Position(1,1), GameConstants.ARCHER);
+	  
+	  //First check to see if freshly produced unit is placed on tile.
+	  Unit u = game.getUnitAt(p);
+	  assertNotNull("Unit u should be at the city's tile, in this example (1,1)", u);
+	  
+	  //Now check if another unit can be placed on top of the first unit.
+	  
+	  //Play 1 round
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  
+	  game.changeProductionInCityAt(new Position(1,1), GameConstants.LEGION);
+	  u = game.getUnitAt(p);
+	  assertEquals("Unit at tile (1,1) should still be archer, as there can only be one unit per tile", GameConstants.ARCHER, u.getTypeString());
+	  
+	  //Place this unit on a surrounding tile, starting with the tile just north of the city position, then going clockwise around the city.
+	  u = game.getUnitAt(new Position(p.getColumn(), p.getRow() - 1));
+	  assertNotNull("Unit u should be just north of the city's tile, in this example (1,0)", u);
+	  
+	  //Place unit on another surrounding tile.
+	  //Play 1 round
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  
+	  game.changeProductionInCityAt(new Position(1,1), GameConstants.LEGION);
+	  u = game.getUnitAt(new Position(p.getColumn() + 1, p.getRow() - 1));
+	  
+	  assertNotNull("Unit u should be just north of the city's tile, in this example (2,0)", u);
+  }
+  
+  /**
+   * Game aging tests.
+   */
+  @Test
   public void gameStartsAtYear4000BC(){
 	  assertEquals("Game should start at year 4000 BC (year -4000)", -4000, game.getAge());
   }
@@ -212,6 +266,9 @@ public class TestAlphaCiv {
 	  assertEquals("End of Round should advance year by 100", previousRoundYear + 100, game.getAge());
   }
   
+  /**
+   * Game winning tests.
+   */
   @Test
   public void nooneHasWonBefore3000BC(){
 	  assertEquals("Noone should have won before the year 3000 BC (year -3000)", null, game.getWinner());
