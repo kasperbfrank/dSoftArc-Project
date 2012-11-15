@@ -37,10 +37,16 @@ public class GameImpl implements Game {
 	private Tile[][] tileArray = new Tile[16][16];
 	private CityImpl[][] cityArray = new CityImpl[16][16];
 	
-	public GameImpl(Player p1, Player p2){
+	private AgingStrategy agingStrategy;
+	private WinnerStrategy winnerStrategy;
+	
+	public GameImpl(Player p1, Player p2, AgingStrategy as, WinnerStrategy ws){
 		
 		playerList.add(p1);
 		playerList.add(p2);
+		
+		this.agingStrategy = as;
+		this.winnerStrategy = ws;
 		
 		playerInTurn = p1;
 		
@@ -130,11 +136,9 @@ public class GameImpl implements Game {
 		  playerIterator = playerList.iterator();
 		  playerInTurn = playerIterator.next();
 		  
-		  this.age += 100;
+		  age = agingStrategy.doAging(age);
 		  
-		  if (this.age == -3000){
-			  winner = Player.RED;
-		  }
+		  winner = winnerStrategy.getWinner(this);
 		  
 		  for (int i = 0; i < cityArray.length; i++) {
 	            for (int j = 0; j < cityArray[i].length; j++) {
