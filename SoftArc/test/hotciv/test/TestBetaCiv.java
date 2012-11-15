@@ -37,10 +37,69 @@ public class TestBetaCiv {
   
   // Aging Tests
   @Test
-  public void between4000BCAnd100BC100YearsPassPerRound() {
-	  for (int year = -4000; year < -100; year += 100) {
+  public void worldAgesCorrectly() {
+	  int year = -4000;
+	  
+	  for (int i = -4000; i < -100; i += 100) {
 		  
-		  assertEquals("100 Years should pass per round", year, game.getAge());
+		  assertEquals("100 Years should pass per round", i, game.getAge());
+		  
+		  game.endOfTurn();
+		  game.endOfTurn();
+	  }
+	  
+	//Year -100
+	  year = -100;
+	  assertEquals("Age should be -100", year, game.getAge());
+	  
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  
+	  //Year -1
+	  year = -1;
+	  assertEquals("Age should be -1", year, game.getAge());
+	  
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  
+	  //Year +1
+	  year = 1;
+	  assertEquals("Age should be +1", year, game.getAge());
+	  
+	  game.endOfTurn();
+	  game.endOfTurn();
+	  
+	  //Year +50
+	  year = 50;
+	  assertEquals("Age should be +50", year, game.getAge());
+	  
+	  for (int i = 50; i < 1750; i += 50) {
+		  
+		  assertEquals("50 Years should pass per round", i, game.getAge());
+		  
+		  game.endOfTurn();
+		  game.endOfTurn();
+	  }
+	  
+	  for (int i = 1750; i < 1900; i += 25) {
+		  
+		  assertEquals("25 Years should pass per round", i, game.getAge());
+		  
+		  game.endOfTurn();
+		  game.endOfTurn();
+	  }
+
+	  for (int i = 1900; i < 1970; i += 5) {
+	  
+		  assertEquals("5 Years should pass per round", i, game.getAge());
+		  
+		  game.endOfTurn();
+		  game.endOfTurn();
+	  }
+	  
+	  for (int i = 1970; i < 2000; i++) {
+		  
+		  assertEquals("1 Year should pass per round", i, game.getAge());
 		  
 		  game.endOfTurn();
 		  game.endOfTurn();
