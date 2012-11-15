@@ -118,7 +118,7 @@ HotCiv build management.
   <!-- JUnit testing -->
   <target name="test"  depends="build-all">
     <java classname="org.junit.runner.JUnitCore">
-      <arg value="hotciv.standard.TestAlphaCiv"/>
+      <arg value="hotciv.test.TestAlphaCiv"/>
       <classpath refid="class-path"/>
     </java>
   </target>
@@ -131,7 +131,7 @@ HotCiv build management.
 	      columns="name,class,method,block"
               classname="org.junit.runner.JUnitCore">
       <html/>
-      <arg value="hotciv.standard.TestAlphaCiv"/>
+      <arg value="hotciv.test.TestAlphaCiv"/>
       <classpath refid="class-path"/>
     </emmajava>
   </target>

@@ -29,7 +29,7 @@ public class GameImpl implements Game {
 	private Player playerInTurn;
 	private Iterator<Player> playerIterator;
 	private ArrayList<Unit> unitList = new ArrayList();
-	private int age;
+	private int age = -4000;
 	private Player winner;
 	
 	private int archerCost = 10;
@@ -42,7 +42,6 @@ public class GameImpl implements Game {
 	private CityImpl[][] cityArray = new CityImpl[16][16];
 	
 	public GameImpl(Player p1, Player p2){
-		age = -4000;
 		
 		playerList.add(p1);
 		playerList.add(p2);
@@ -99,29 +98,32 @@ public class GameImpl implements Game {
 	
 	Tile t = getTileAt(to);
 	Unit u = unitArray[from.getRow()][from.getColumn()];
-	  
-	if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] == null){
-		
-		//Move path free
-		unitArray[to.getRow()][to.getColumn()] = u;
-		unitArray[from.getRow()][from.getColumn()] = null;
+	
+	if (u != null) {
+		if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] == null){
 			
-		return true;
-	} else if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] != null) {
-		//Unit is blocking Tile
-		if(!playerInTurn.equals(unitArray[to.getRow()][to.getColumn()].getOwner())){
-			//You have defeated an enemy!
-			System.out.println("YOU ARE VICTORIOUS!");
-			unitArray[to.getRow()][to.getColumn()] = null;
+			//Move path free
 			unitArray[to.getRow()][to.getColumn()] = u;
+			unitArray[from.getRow()][from.getColumn()] = null;
+				
 			return true;
+		} else if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] != null) {
+			//Unit is blocking Tile
+			if(!playerInTurn.equals(unitArray[to.getRow()][to.getColumn()].getOwner())){
+				//You have defeated an enemy!
+				System.out.println("YOU ARE VICTORIOUS!");
+				unitArray[to.getRow()][to.getColumn()] = null;
+				unitArray[to.getRow()][to.getColumn()] = u;
+				return true;
+			} else {
+				//Friendly unit is blocking the Tile
+				return false;
+			}
 		} else {
-			//Friendly unit is blocking the Tile
 			return false;
 		}
-	} else {
-		return false;
-	}
+	}	
+	return false;
   }
   
   public void endOfTurn() {

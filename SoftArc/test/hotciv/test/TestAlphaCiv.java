@@ -3,6 +3,7 @@ package hotciv.test;
 import hotciv.framework.*;
 import hotciv.standard.CityImpl;
 import hotciv.standard.GameImpl;
+import hotciv.standard.UnitImpl;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -132,6 +133,18 @@ public class TestAlphaCiv {
 	  Position from = new Position(2,0);
 	  
 	  assertFalse("Unit should not be able to move to another units location", game.moveUnit(from, to));
+  }
+  
+  @Test
+  public void shouldOnlyMoveUnits(){
+	  Unit u = new UnitImpl(Player.RED, GameConstants.ARCHER);
+	  
+	  Position to = new Position(4,3);
+	  Position from = new Position(0,0);
+	  
+	  assertNull("Unit should be an actual unit", game.getUnitAt(from));
+	  
+	  assertFalse("Should not be able to move anything but units", game.moveUnit(from, to));
   }
   
   /**
