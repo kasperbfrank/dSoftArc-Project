@@ -183,13 +183,13 @@ public class GameImpl implements Game {
 	  Unit u = new UnitImpl(this.playerInTurn, c.getProduction());
 	  
 	  //Place unit on tile, if not already occupied.
-	  if(this.unitArray[p.getRow()][p.getColumn()] == null){
-		  this.unitArray[p.getRow()][p.getColumn()] = u;
+	  if(this.unitArray[p.getColumn()][p.getRow()] == null){
+		  this.unitArray[p.getColumn()][p.getRow()] = u;
 	  }else{
 		  Position[] pArray = this.getTilesAround(p);
 		  for(Position pos : pArray){
-			  if(this.unitArray[pos.getRow()][pos.getColumn()] == null){
-				  this.unitArray[pos.getRow()][pos.getColumn()] = u;
+			  if(this.unitArray[pos.getColumn()][pos.getRow()] == null){
+				  this.unitArray[pos.getColumn()][pos.getRow()] = u;
 			  }
 		  }
 	  }
