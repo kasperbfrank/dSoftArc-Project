@@ -203,14 +203,14 @@ public class GameImpl implements Game {
 	  Position[] pArray = new Position[8];
 	  
 	  //Get the surrounding tiles.
-	  pArray[0] = new Position(p.getColumn(), p.getRow() - 1);
-	  pArray[1] = new Position(p.getColumn() + 1, p.getRow() - 1);
-	  pArray[2] = new Position(p.getColumn() + 1, p.getRow());
-	  pArray[3] = new Position(p.getColumn() + 1, p.getRow() + 1);
-	  pArray[4] = new Position(p.getColumn(), p.getRow() + 1);
-	  pArray[5] = new Position(p.getColumn() - 1, p.getRow() + 1);
-	  pArray[6] = new Position(p.getColumn() - 1, p.getRow());
-	  pArray[7] = new Position(p.getColumn() - 1, p.getRow() - 1);
+	  pArray[0] = new Position(p.getRow() - 1, p.getColumn());
+	  pArray[1] = new Position(p.getRow() - 1, p.getColumn() + 1);
+	  pArray[2] = new Position(p.getRow(), p.getColumn() + 1);
+	  pArray[3] = new Position(p.getRow() + 1, p.getColumn() + 1);
+	  pArray[4] = new Position(p.getRow() + 1, p.getColumn());
+	  pArray[5] = new Position(p.getRow() + 1, p.getColumn() - 1);
+	  pArray[6] = new Position(p.getRow(), p.getColumn() - 1);
+	  pArray[7] = new Position(p.getRow() - 1, p.getColumn() - 1);
 	  
 	  return pArray;
   }
