@@ -32,10 +32,6 @@ public class GameImpl implements Game {
 	private int age = -4000;
 	private Player winner;
 	
-	private int archerCost = 10;
-	private int legionCost = 5;
-	private int settlerCost = 15;
-	
 	//Position.
 	private Unit[][] unitArray = new Unit[16][16];
 	private Tile[][] tileArray = new Tile[16][16];
@@ -51,6 +47,12 @@ public class GameImpl implements Game {
 		playerIterator = playerList.iterator();
 		playerIterator.next();
 		
+		for (int i = 0; i < 16; i++){
+			for (int j = 0; j < 16; j++){
+				tileArray[i][j] = new TileImpl(new Position(i, j), GameConstants.PLAINS);
+			}
+		}
+		
 		tileArray[1][0] = new TileImpl(new Position(1,0), GameConstants.OCEANS);
 		tileArray[0][1] = new TileImpl(new Position(0,1), GameConstants.HILLS);
 		tileArray[2][2] = new TileImpl(new Position(2,2), GameConstants.MOUNTAINS);
@@ -65,13 +67,7 @@ public class GameImpl implements Game {
 	}
 	
   public Tile getTileAt( Position p ) {
-	  Tile t = tileArray[p.getRow()][p.getColumn()];
-	  
-	  if(t == null){
-		  t = new TileImpl(new Position(p.getRow(), p.getColumn()), GameConstants.PLAINS);
-	  }
-	  
-	  return t;
+	  return tileArray[p.getRow()][p.getColumn()];
   }
   
   public Unit getUnitAt( Position p ) {
@@ -157,19 +153,19 @@ public class GameImpl implements Game {
 	  CityImpl c = (CityImpl) this.getCityAt(p);
 	  
 	  if (unitType.equals(GameConstants.ARCHER)){
-		  if (c.getMoney() >= archerCost){
+		  if (c.getMoney() >= GameConstants.archerCost){
 			  c.setProduction(GameConstants.ARCHER);
-			  c.setMoney(c.getMoney() - archerCost);
+			  c.setMoney(c.getMoney() - GameConstants.archerCost);
 		  }  
 	  } else if (unitType.equals(GameConstants.LEGION)){
-		  if (c.getMoney() >= legionCost){
+		  if (c.getMoney() >= GameConstants.legionCost){
 			  c.setProduction(GameConstants.LEGION);
-			  c.setMoney(c.getMoney() - legionCost);
+			  c.setMoney(c.getMoney() - GameConstants.legionCost);
 		  }  
 	  } else if (unitType.equals(GameConstants.SETTLER)){
-		  if (c.getMoney() >= settlerCost){
+		  if (c.getMoney() >= GameConstants.settlerCost){
 			  c.setProduction(GameConstants.SETTLER);
-			  c.setMoney(c.getMoney() - settlerCost);
+			  c.setMoney(c.getMoney() - GameConstants.settlerCost);
 		  }  
 	  }
 	  
