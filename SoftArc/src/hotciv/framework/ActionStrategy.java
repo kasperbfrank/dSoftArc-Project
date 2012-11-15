@@ -1,5 +1,5 @@
 package hotciv.framework;
 
 public interface ActionStrategy {
-	public void performAction(Unit unit);
+	public void performAction(Game game, Position p);
 }
