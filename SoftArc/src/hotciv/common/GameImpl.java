@@ -48,6 +48,7 @@ public class GameImpl implements Game {
 
 		this.agingStrategy = as;
 		this.winnerStrategy = ws;
+		this.actionStrategy = acs;
 
 		playerInTurn = p1;
 
@@ -196,7 +197,10 @@ public class GameImpl implements Game {
 
 	}
 	public void performUnitActionAt( Position p ) {
-		this.actionStrategy.performAction(this, p);
+		Unit unit = this.getUnitAt(p);
+		if (unit.getOwner().equals(this.playerInTurn)) {
+			this.actionStrategy.performAction(this, p);
+		}
 	}
 
 	private Position[] getTilesAround(Position  p){
@@ -221,7 +225,7 @@ public class GameImpl implements Game {
 
 	@Override
 	public void insertCityAtPosition(Position p) {
-		cityArray[p.getRow()][p.getColumn()] = new CityImpl(getPlayerInTurn());
+		cityArray[p.getRow()][p.getColumn()] = new CityImpl(this.getUnitAt(p).getOwner());
 		unitArray[p.getRow()][p.getColumn()] = null;
 	}
 }
