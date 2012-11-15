@@ -106,4 +106,15 @@ public class TestBetaCiv {
 	  }
   }
   
+  //Winning tests
+  @Test
+  public void playerWinsWhenOwningAllCities(){
+	  Position from = new Position(2,0);
+	  Position to = new Position(4,1);
+	  
+	  game.moveUnit(from, to);
+	  
+	  assertEquals("RED wins when RED owns all cities on the map", Player.RED, game.getWinner());
+  }
+  
 }

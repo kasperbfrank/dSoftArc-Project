@@ -107,6 +107,13 @@ public class GameImpl implements Game {
 			//Move path free
 			unitArray[to.getRow()][to.getColumn()] = u;
 			unitArray[from.getRow()][from.getColumn()] = null;
+			
+			//Conquer city if city is there.
+			CityImpl c = cityArray[to.getRow()][to.getColumn()];
+			if(c != null){
+				c.setOwner(playerInTurn);
+				winner = this.winnerStrategy.getWinner(this);
+			}
 				
 			return true;
 		} else if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] != null) {
@@ -204,5 +211,9 @@ public class GameImpl implements Game {
 	  pArray[7] = new Position(p.getColumn() - 1, p.getRow() - 1);
 	  
 	  return pArray;
+  }
+  
+  public CityImpl[][] getAllCities(){
+	  return cityArray;
   }
 }

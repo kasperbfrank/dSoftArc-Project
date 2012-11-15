@@ -1,5 +1,7 @@
 package hotciv.framework;
 
+import hotciv.common.CityImpl;
+
 /** Game is the central interface allowing a client to access and
  * modify the state of a HotCiv game.  
    This source code is from the book 
@@ -122,6 +124,7 @@ public interface Game {
    * Nothing happens in case the unit has no associated action.
    */
   public void performUnitActionAt( Position p );
-
+  
+  public CityImpl[][] getAllCities();
 
 }

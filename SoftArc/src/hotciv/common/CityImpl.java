@@ -48,5 +48,9 @@ public class CityImpl implements City{
 	public void setProduction(String prod){
 		this.production = prod;
 	}
+	
+	public void setOwner(Player player){
+		this.owner = player;
+	}
 
 }
