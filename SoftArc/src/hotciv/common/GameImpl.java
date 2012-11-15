@@ -39,8 +39,9 @@ public class GameImpl implements Game {
 	
 	private AgingStrategy agingStrategy;
 	private WinnerStrategy winnerStrategy;
+	private ActionStrategy actionStrategy;
 	
-	public GameImpl(Player p1, Player p2, AgingStrategy as, WinnerStrategy ws){
+	public GameImpl(Player p1, Player p2, AgingStrategy as, WinnerStrategy ws, ActionStrategy acs){
 		
 		playerList.add(p1);
 		playerList.add(p2);
@@ -194,7 +195,8 @@ public class GameImpl implements Game {
 	  }
 	   
   }
-  public void performUnitActionAt( Position p ) {}
+  public void performUnitActionAt( Position p ) {
+  }
   
   private Position[] getTilesAround(Position  p){
 	  Position[] pArray = new Position[8];
