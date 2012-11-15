@@ -136,7 +136,7 @@ public class GameImpl implements Game {
 		  playerIterator = playerList.iterator();
 		  playerInTurn = playerIterator.next();
 		  
-		  age = agingStrategy.doAging(age);
+		  age = agingStrategy.doAging(this.age);
 		  
 		  winner = winnerStrategy.getWinner(this);
 		  

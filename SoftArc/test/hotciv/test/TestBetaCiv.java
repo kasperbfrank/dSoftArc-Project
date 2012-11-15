@@ -4,8 +4,8 @@ import hotciv.common.CityImpl;
 import hotciv.common.GameImpl;
 import hotciv.common.UnitImpl;
 import hotciv.framework.*;
-import hotciv.variants.AlphaAgingStrategy;
-import hotciv.variants.AlphaWinnerStrategy;
+import hotciv.variants.BetaAgingStrategy;
+import hotciv.variants.BetaWinnerStrategy;
 
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -32,6 +32,19 @@ public class TestBetaCiv {
   /** Fixture for betaCiv testing. */
   @Before
   public void setUp() {
-    game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy());
+    game = new GameImpl(Player.RED, Player.BLUE, new BetaAgingStrategy(), new BetaWinnerStrategy());
   }
+  
+  // Aging Tests
+  @Test
+  public void between4000BCAnd100BC100YearsPassPerRound() {
+	  for (int year = -4000; year < -100; year += 100) {
+		  
+		  assertEquals("100 Years should pass per round", year, game.getAge());
+		  
+		  game.endOfTurn();
+		  game.endOfTurn();
+	  }
+  }
+  
 }

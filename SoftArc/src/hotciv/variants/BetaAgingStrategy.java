@@ -6,7 +6,8 @@ public class BetaAgingStrategy implements AgingStrategy {
 
 	@Override
 	public int doAging(int age) {
-		return age;
+		
+		return age + 100;
 	}
 
 }
