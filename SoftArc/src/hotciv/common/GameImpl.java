@@ -1,4 +1,4 @@
-package hotciv.standard;
+package hotciv.common;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;

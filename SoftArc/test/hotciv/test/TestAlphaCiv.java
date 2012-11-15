@@ -1,9 +1,9 @@
 package hotciv.test;
 
+import hotciv.common.CityImpl;
+import hotciv.common.GameImpl;
+import hotciv.common.UnitImpl;
 import hotciv.framework.*;
-import hotciv.standard.CityImpl;
-import hotciv.standard.GameImpl;
-import hotciv.standard.UnitImpl;
 
 import org.junit.*;
 import static org.junit.Assert.*;
