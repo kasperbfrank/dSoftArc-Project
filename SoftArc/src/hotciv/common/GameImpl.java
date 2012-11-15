@@ -196,6 +196,7 @@ public class GameImpl implements Game {
 	   
   }
   public void performUnitActionAt( Position p ) {
+	  this.actionStrategy.performAction(this.unitArray[p.getColumn()][p.getRow()]);
   }
   
   private Position[] getTilesAround(Position  p){
