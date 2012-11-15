@@ -9,6 +9,9 @@ public class UnitImpl implements Unit{
 	private Player owner;
 	private String type;
 	
+	private int attackingStrength;
+	private int defensiveStrength;
+	
 	public UnitImpl(Player owner, String type){
 		this.owner = owner;
 		this.type = type;
@@ -35,13 +38,25 @@ public class UnitImpl implements Unit{
 	@Override
 	public int getDefensiveStrength() {
 		// TODO Auto-generated method stub
-		return 0;
+		return defensiveStrength;
 	}
 
 	@Override
 	public int getAttackingStrength() {
 		// TODO Auto-generated method stub
-		return 0;
+		return attackingStrength;
+	}
+
+	@Override
+	public void setDefensiveStrength(int ds) {
+		// TODO Auto-generated method stub
+		defensiveStrength = ds;
+	}
+
+	@Override
+	public void setAttackingStrength(int as) {
+		// TODO Auto-generated method stub
+		attackingStrength = as;
 	}
 
 }
