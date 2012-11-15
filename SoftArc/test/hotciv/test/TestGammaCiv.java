@@ -38,10 +38,12 @@ public class TestGammaCiv {
 	
 	@Test
 	public void settlerBuildsCityAtHisPositionAndRemovesHimself(){
-		game.performUnitActionAt(new Position(4,3));
+		Position p = new Position(4,3);
 		
-		assertNotNull("There is now a City at (4,3)", game.getCityAt(new Position(4,3)));
-		assertNull("There should not be any unit at (4,3)", game.getUnitAt(new Position(4,3)));
+		game.performUnitActionAt(p);
+		
+		assertNotNull("There is now a City at (4,3)", game.getCityAt(p));
+		assertNull("There should not be any unit at (4,3)", game.getUnitAt(p));
 	}
 	
 	@Test
