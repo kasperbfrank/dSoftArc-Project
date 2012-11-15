@@ -74,15 +74,15 @@ public class GameImpl implements Game {
 	}
 	
   public Tile getTileAt( Position p ) {
-	  return tileArray[p.getRow()][p.getColumn()];
+	  return tileArray[p.getColumn()][p.getRow()];
   }
   
   public Unit getUnitAt( Position p ) {
-	  return unitArray[p.getRow()][p.getColumn()];
+	  return unitArray[p.getColumn()][p.getRow()];
   }
   
   public City getCityAt( Position p ) { 
-	  return cityArray[p.getRow()][p.getColumn()]; 
+	  return cityArray[p.getColumn()][p.getRow()]; 
   }
   
   public Player getPlayerInTurn() {
@@ -100,29 +100,29 @@ public class GameImpl implements Game {
   public boolean moveUnit( Position from, Position to ) {
 	
 	Tile t = getTileAt(to);
-	Unit u = unitArray[from.getRow()][from.getColumn()];
+	Unit u = unitArray[from.getColumn()][from.getRow()];
 	
 	if (u != null) {
-		if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] == null){
+		if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getColumn()][to.getRow()] == null){
 			
 			//Move path free
-			unitArray[to.getRow()][to.getColumn()] = u;
-			unitArray[from.getRow()][from.getColumn()] = null;
+			unitArray[to.getColumn()][to.getRow()] = u;
+			unitArray[from.getColumn()][from.getRow()] = null;
 			
 			//Conquer city if city is there.
-			City c = cityArray[to.getRow()][to.getColumn()];
+			City c = cityArray[to.getColumn()][to.getRow()];
 			if(c != null){
 				c.setOwner(playerInTurn);
 				winner = this.winnerStrategy.getWinner(this);
 			}
 				
 			return true;
-		} else if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] != null) {
+		} else if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getColumn()][to.getRow()] != null) {
 			//Unit is blocking Tile
-			if(!playerInTurn.equals(unitArray[to.getRow()][to.getColumn()].getOwner())){
+			if(!playerInTurn.equals(unitArray[to.getColumn()][to.getRow()].getOwner())){
 				//You have defeated an enemy!
-				unitArray[to.getRow()][to.getColumn()] = null;
-				unitArray[to.getRow()][to.getColumn()] = u;
+				unitArray[to.getColumn()][to.getRow()] = null;
+				unitArray[to.getColumn()][to.getRow()] = u;
 				return true;
 			} else {
 				//Friendly unit is blocking the Tile
