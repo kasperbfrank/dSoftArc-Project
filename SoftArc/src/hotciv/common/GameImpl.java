@@ -35,7 +35,7 @@ public class GameImpl implements Game {
 	//Position.
 	private Unit[][] unitArray = new Unit[16][16];
 	private Tile[][] tileArray = new Tile[16][16];
-	private CityImpl[][] cityArray = new CityImpl[16][16];
+	private City[][] cityArray = new City[16][16];
 	
 	private AgingStrategy agingStrategy;
 	private WinnerStrategy winnerStrategy;
@@ -109,7 +109,7 @@ public class GameImpl implements Game {
 			unitArray[from.getRow()][from.getColumn()] = null;
 			
 			//Conquer city if city is there.
-			CityImpl c = cityArray[to.getRow()][to.getColumn()];
+			City c = cityArray[to.getRow()][to.getColumn()];
 			if(c != null){
 				c.setOwner(playerInTurn);
 				winner = this.winnerStrategy.getWinner(this);
@@ -120,7 +120,6 @@ public class GameImpl implements Game {
 			//Unit is blocking Tile
 			if(!playerInTurn.equals(unitArray[to.getRow()][to.getColumn()].getOwner())){
 				//You have defeated an enemy!
-				System.out.println("YOU ARE VICTORIOUS!");
 				unitArray[to.getRow()][to.getColumn()] = null;
 				unitArray[to.getRow()][to.getColumn()] = u;
 				return true;
@@ -150,7 +149,7 @@ public class GameImpl implements Game {
 		  for (int i = 0; i < cityArray.length; i++) {
 	            for (int j = 0; j < cityArray[i].length; j++) {
 	                if (cityArray[i][j] != null){
-	                	CityImpl c = cityArray[i][j];
+	                	City c = cityArray[i][j];
 	                	c.setMoney(c.getMoney() + 6);
 	                }
 	            }
@@ -161,7 +160,7 @@ public class GameImpl implements Game {
   public void changeWorkForceFocusInCityAt( Position p, String balance ) {}
   
   public void changeProductionInCityAt( Position p, String unitType ) {
-	  CityImpl c = (CityImpl) this.getCityAt(p);
+	  City c = this.getCityAt(p);
 	  
 	  if (unitType.equals(GameConstants.ARCHER)){
 		  if (c.getMoney() >= GameConstants.archerCost){
@@ -180,7 +179,7 @@ public class GameImpl implements Game {
 		  }  
 	  }
 	  
-	  UnitImpl u = new UnitImpl(this.playerInTurn, c.getProduction());
+	  Unit u = new UnitImpl(this.playerInTurn, c.getProduction());
 	  
 	  //Place unit on tile, if not already occupied.
 	  if(this.unitArray[p.getRow()][p.getColumn()] == null){
@@ -213,7 +212,7 @@ public class GameImpl implements Game {
 	  return pArray;
   }
   
-  public CityImpl[][] getAllCities(){
+  public City[][] getAllCities(){
 	  return cityArray;
   }
 }

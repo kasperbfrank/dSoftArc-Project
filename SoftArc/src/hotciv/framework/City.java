@@ -42,5 +42,13 @@ public interface City {
    * for valid return values.
    */
   public String getWorkforceFocus();
+  
+  public int getMoney();
+	
+  public void setMoney(int money);
+	
+  public void setProduction(String prod);
+	
+  public void setOwner(Player player);
 
 }

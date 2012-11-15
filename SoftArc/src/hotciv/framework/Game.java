@@ -125,6 +125,6 @@ public interface Game {
    */
   public void performUnitActionAt( Position p );
   
-  public CityImpl[][] getAllCities();
+  public City[][] getAllCities();
 
 }
