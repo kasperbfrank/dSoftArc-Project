@@ -22,7 +22,7 @@ public class GammaActionStrategy implements ActionStrategy {
 			}
 		}else if(unit.getTypeString().equals(GameConstants.SETTLER)){
 			//Build city at unit position
-			game.insertCityAtPosition(p);	
+			game.insertCityAtPosition(p, unit.getOwner());	
 		}
 	}
 

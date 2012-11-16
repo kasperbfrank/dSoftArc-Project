@@ -6,6 +6,7 @@ import hotciv.common.UnitImpl;
 import hotciv.framework.*;
 import hotciv.variants.AlphaAgingStrategy;
 import hotciv.variants.AlphaWinnerStrategy;
+import hotciv.variants.AlphaWorldLayoutStrategy;
 import hotciv.variants.GammaActionStrategy;
 
 import org.junit.*;
@@ -29,33 +30,35 @@ import static org.junit.Assert.*;
  */
 public class TestGammaCiv {
 
+	String[] worldLayout = new String[16];
 	private Game game;
 	/** Fixture for GammaCiv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new GammaActionStrategy());
+		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new GammaActionStrategy(), new AlphaWorldLayoutStrategy(),
+				new Position(1,1), new Position(4,1), worldLayout);
 	}
-	
+
 	@Test
 	public void settlerBuildsCityAtHisPositionAndRemovesHimself(){
 		Position p = new Position(4,3);
-		
+
 		game.performUnitActionAt(p);
-		
+
 		assertNotNull("There is now a City at (4,3)", game.getCityAt(p));
 		assertNull("There should not be any unit at (4,3)", game.getUnitAt(p));
 	}
-	
+
 	@Test
 	public void archerFortifiesHimeselfOrCancels(){
 		Position p = new Position(2,0);
-		
+
 		game.performUnitActionAt(p);
-		
+
 		assertEquals("Archer should now have double defensive strength", GameConstants.archerDS * 2, game.getUnitAt(p).getDefensiveStrength());
-		
+
 		game.performUnitActionAt(p);
 		assertEquals("Archer should now have normal defensive strength", GameConstants.archerDS, game.getUnitAt(p).getDefensiveStrength());
-		
+
 	}
 }

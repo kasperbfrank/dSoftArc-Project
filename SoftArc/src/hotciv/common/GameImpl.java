@@ -31,46 +31,45 @@ public class GameImpl implements Game {
 	private ArrayList<Unit> unitList = new ArrayList();
 	private int age = -4000;
 	private Player winner;
+	private Position redCityPosition;
+	private Position blueCityPosition;
+	private String[] worldMap;
 
 	//Position.
 	private Unit[][] unitArray = new Unit[16][16];
-	private Tile[][] tileArray = new Tile[16][16];
+	private Tile[][] tileArray;
 	private City[][] cityArray = new City[16][16];
 
 	private AgingStrategy agingStrategy;
 	private WinnerStrategy winnerStrategy;
 	private ActionStrategy actionStrategy;
-
-	public GameImpl(Player p1, Player p2, AgingStrategy as, WinnerStrategy ws, ActionStrategy acs){
-
+	private WorldLayoutStrategy worldLayoutStrategy;
+	
+	public GameImpl(Player p1, Player p2, AgingStrategy as, WinnerStrategy ws, ActionStrategy acs, WorldLayoutStrategy wls, 
+			Position redCityPosition, Position blueCityPosition, String[] worldMap){
+		
 		playerList.add(p1);
 		playerList.add(p2);
+		
+		this.redCityPosition = redCityPosition;
+		this.blueCityPosition = blueCityPosition;
+		this.worldMap = worldMap;
 
 		this.agingStrategy = as;
 		this.winnerStrategy = ws;
 		this.actionStrategy = acs;
+		this.worldLayoutStrategy = wls;
 
 		playerInTurn = p1;
 
 		playerIterator = playerList.iterator();
 		playerIterator.next();
-
-		for (int i = 0; i < 16; i++){
-			for (int j = 0; j < 16; j++){
-				tileArray[i][j] = new TileImpl(new Position(i, j), GameConstants.PLAINS);
-			}
-		}
-
-		tileArray[1][0] = new TileImpl(new Position(1,0), GameConstants.OCEANS);
-		tileArray[0][1] = new TileImpl(new Position(0,1), GameConstants.HILLS);
-		tileArray[2][2] = new TileImpl(new Position(2,2), GameConstants.MOUNTAINS);
+		
+		tileArray = worldLayoutStrategy.buildWord(this, redCityPosition, blueCityPosition, worldMap);
 
 		unitArray[2][0] = new UnitImpl(Player.RED, GameConstants.ARCHER);
 		unitArray[3][2] = new UnitImpl(Player.BLUE, GameConstants.LEGION);
 		unitArray[4][3] = new UnitImpl(Player.RED, GameConstants.SETTLER);
-
-		cityArray[1][1] = new CityImpl(Player.RED);
-		cityArray[4][1] = new CityImpl(Player.BLUE);
 
 	}
 
@@ -224,8 +223,8 @@ public class GameImpl implements Game {
 	}
 
 	@Override
-	public void insertCityAtPosition(Position p) {
-		cityArray[p.getRow()][p.getColumn()] = new CityImpl(this.getUnitAt(p).getOwner());
+	public void insertCityAtPosition(Position p, Player player) {
+		cityArray[p.getRow()][p.getColumn()] = new CityImpl(player);
 		unitArray[p.getRow()][p.getColumn()] = null;
 	}
 }
