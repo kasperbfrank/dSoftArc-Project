@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
  */
 public class TestGammaCiv {
 
-	String[] worldLayout = new String[16];
+	String[] worldLayout;
 	private Game game;
 	/** Fixture for GammaCiv testing. */
 	@Before

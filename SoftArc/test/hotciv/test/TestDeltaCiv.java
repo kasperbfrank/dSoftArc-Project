@@ -31,8 +31,28 @@ import static org.junit.Assert.*;
  */
 public class TestDeltaCiv {
 
-	String[] worldLayout = new String[16];
 	private Game game;
+	
+	// String[] Defining the world map where P = PLAINS, O = OCEAN, M = MOUNTAINS, F = FOREST, H = HILLS.
+	String[] worldLayout = new String[] {
+		"OOOPPMPPPPPOOOOO",
+		"OOPHHPPPPFFFPPOO",
+		"OPPPPPMPPPOOOPPO",
+		"OPPMMMPPPPOOPPPP",
+		"OOOPFPPPHHPPPPOO",
+		"OPFPPFPPPPPHHPPO",
+		"OOOPPPOOOOOOOOOO",
+		"OPPPPPOPPPHPPMOO",
+		"OPPPPPOPPHPPPFOO",
+		"PFFFPPPPOPFFPPPP",
+		"PPPPPPPPOOOPPPPP",
+		"OPPMMMPPPPOOOOOO",
+		"OOPPPPPPFFPPPPOO",
+		"OOOOPPPPPPPPPOOO",
+		"OOPPPHHPPOOOOOOO",
+		"OOOOOPPPPPPPPPOO"
+	};
+	
 	/** Fixture for deltaciv testing. */
 	@Before
 	public void setUp() {
@@ -50,5 +70,40 @@ public class TestDeltaCiv {
 	public void blueHasCityAt4_5(){
 		City c = game.getCityAt(new Position(4,5));
 		assertEquals("City at position (4,5) is owned by blue", Player.BLUE, c.getOwner());
+	}
+	
+	@Test
+	public void plainsAt0_3(){
+		Position p = new Position(0,3);
+		Tile t = game.getTileAt(p);
+		assertEquals("Tile at position (0,3) should be of type plains", GameConstants.PLAINS, t.getTypeString());
+	}
+	
+	@Test
+	public void oceansAt0_0(){
+		Position p = new Position(0,0);
+		Tile t = game.getTileAt(p);
+		assertEquals("Tile at position (0,0) should be of type oceans", GameConstants.OCEANS, t.getTypeString());
+	}
+	
+	@Test
+	public void mountainsAt0_5(){
+		Position p = new Position(0,5);
+		Tile t = game.getTileAt(p);
+		assertEquals("Tile at position (0,5) should be of type mountains", GameConstants.MOUNTAINS, t.getTypeString());
+	}
+	
+	@Test
+	public void forestAt1_11(){
+		Position p = new Position(1,11);
+		Tile t = game.getTileAt(p);
+		assertEquals("Tile at position (1,11) should be of type forest", GameConstants.FOREST, t.getTypeString());
+	}
+	
+	@Test
+	public void hillsAt1_4(){
+		Position p = new Position(1,4);
+		Tile t = game.getTileAt(p);
+		assertEquals("Tile at position (1,4) should be of type hills", GameConstants.HILLS, t.getTypeString());
 	}
 }

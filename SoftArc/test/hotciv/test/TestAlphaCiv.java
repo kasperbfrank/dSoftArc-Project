@@ -30,7 +30,7 @@ import static org.junit.Assert.*;
  */
 public class TestAlphaCiv {
 
-	String[] worldLayout = new String[16];
+	String[] worldLayout;
 	private Game game;
 	/** Fixture for alphaciv testing. */
 	@Before
