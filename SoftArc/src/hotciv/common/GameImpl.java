@@ -222,7 +222,6 @@ public class GameImpl implements Game {
 		return cityArray;
 	}
 
-	@Override
 	public void insertCityAtPosition(Position p, Player player) {
 		cityArray[p.getRow()][p.getColumn()] = new CityImpl(player);
 		unitArray[p.getRow()][p.getColumn()] = null;
