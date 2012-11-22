@@ -35,8 +35,7 @@ public class TestAlphaCiv {
 	/** Fixture for alphaciv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new AlphaActionStrategy(), new AlphaWorldLayoutStrategy(), 
-				new Position(1,1), new Position(4,1), worldLayout);
+		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new AlphaActionStrategy(), new AlphaWorldLayoutStrategy());
 	}
 
 	/**
@@ -143,7 +142,7 @@ public class TestAlphaCiv {
 
 	@Test
 	public void shouldOnlyMoveUnits(){
-		Unit u = new UnitImpl(Player.RED, GameConstants.ARCHER);
+		Unit u = new UnitImpl(Player.RED, GameConstants.ARCHER, GameConstants.ARCHER_DEFENSIVE_STRENGTH);
 
 		Position to = new Position(4,3);
 		Position from = new Position(0,0);
@@ -166,7 +165,7 @@ public class TestAlphaCiv {
 
 		//Moving Red Archer to Blue Legion makes the red unit defeat his blue opponent meaning the red player is victorious..
 		game.moveUnit(from, to);
-		Player p = game.getUnitAt(new Position(2,0)).getOwner();
+		Player p = game.getUnitAt(new Position(3,2)).getOwner();
 
 		assertEquals("Attacking unit should always win", Player.RED, p);
 	}

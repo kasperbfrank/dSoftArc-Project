@@ -16,13 +16,11 @@ public class TileImpl implements Tile{
 
 	@Override
 	public Position getPosition() {
-		// TODO Auto-generated method stub
 		return p;
 	}
 
 	@Override
 	public String getTypeString() {
-		// TODO Auto-generated method stub
 		return type;
 	}
 

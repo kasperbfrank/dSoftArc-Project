@@ -15,25 +15,21 @@ public class CityImpl implements City{
 
 	@Override
 	public Player getOwner() {
-		// TODO Auto-generated method stub
 		return owner;
 	}
 
 	@Override
 	public int getSize() {
-		// TODO Auto-generated method stub
 		return 1;
 	}
 
 	@Override
 	public String getProduction() {
-		// TODO Auto-generated method stub
 		return production;
 	}
 
 	@Override
-	public String getWorkforceFocus() {
-		// TODO Auto-generated method stub
+	public String getWorkforceFocus(){
 		return null;
 	}
 	

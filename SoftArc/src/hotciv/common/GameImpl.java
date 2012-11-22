@@ -28,32 +28,23 @@ public class GameImpl implements Game {
 	private ArrayList<Player> playerList = new ArrayList();
 	private Player playerInTurn;
 	private Iterator<Player> playerIterator;
-	private ArrayList<Unit> unitList = new ArrayList();
 	private int age = -4000;
 	private Player winner;
-	private Position redCityPosition;
-	private Position blueCityPosition;
-	private String[] worldMap;
 
 	//Position.
-	private Unit[][] unitArray = new Unit[16][16];
+	private Unit[][] unitArray = new Unit[GameConstants.WORLDSIZE][GameConstants.WORLDSIZE];
 	private Tile[][] tileArray;
-	private City[][] cityArray = new City[16][16];
+	private City[][] cityArray = new City[GameConstants.WORLDSIZE][GameConstants.WORLDSIZE];
 
 	private AgingStrategy agingStrategy;
 	private WinnerStrategy winnerStrategy;
 	private ActionStrategy actionStrategy;
 	private WorldLayoutStrategy worldLayoutStrategy;
 	
-	public GameImpl(Player p1, Player p2, AgingStrategy as, WinnerStrategy ws, ActionStrategy acs, WorldLayoutStrategy wls, 
-			Position redCityPosition, Position blueCityPosition, String[] worldMap){
+	public GameImpl(Player p1, Player p2, AgingStrategy as, WinnerStrategy ws, ActionStrategy acs, WorldLayoutStrategy wls){
 		
 		playerList.add(p1);
 		playerList.add(p2);
-		
-		this.redCityPosition = redCityPosition;
-		this.blueCityPosition = blueCityPosition;
-		this.worldMap = worldMap;
 
 		this.agingStrategy = as;
 		this.winnerStrategy = ws;
@@ -65,11 +56,7 @@ public class GameImpl implements Game {
 		playerIterator = playerList.iterator();
 		playerIterator.next();
 		
-		tileArray = worldLayoutStrategy.buildWord(this, redCityPosition, blueCityPosition, worldMap);
-
-		unitArray[2][0] = new UnitImpl(Player.RED, GameConstants.ARCHER);
-		unitArray[3][2] = new UnitImpl(Player.BLUE, GameConstants.LEGION);
-		unitArray[4][3] = new UnitImpl(Player.RED, GameConstants.SETTLER);
+		tileArray = worldLayoutStrategy.buildWord(this);
 
 	}
 
@@ -101,37 +88,23 @@ public class GameImpl implements Game {
 
 		Tile t = getTileAt(to);
 		Unit u = unitArray[from.getRow()][from.getColumn()];
-
-		if (u != null) {
-			if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] == null){
-
-				//Move path free
-				unitArray[to.getRow()][to.getColumn()] = u;
-				unitArray[from.getRow()][from.getColumn()] = null;
-
-				//Conquer city if city is there.
-				City c = cityArray[to.getRow()][to.getColumn()];
-				if(c != null){
-					c.setOwner(playerInTurn);
-					winner = this.winnerStrategy.getWinner(this);
-				}
-
-				return true;
-			} else if(!t.getTypeString().equals(GameConstants.MOUNTAINS) && playerInTurn.equals(u.getOwner()) && unitArray[to.getRow()][to.getColumn()] != null) {
-				//Unit is blocking Tile
-				if(!playerInTurn.equals(unitArray[to.getRow()][to.getColumn()].getOwner())){
-					//You have defeated an enemy!
-					unitArray[to.getRow()][to.getColumn()] = null;
-					unitArray[to.getRow()][to.getColumn()] = u;
-					return true;
-				} else {
-					//Friendly unit is blocking the Tile
-					return false;
-				}
-			} else {
+		
+		if (u != null && this.getUnitAt(from).getOwner().equals(playerInTurn)) {
+			if (t.getTypeString().equals(GameConstants.MOUNTAINS) || (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn))){
 				return false;
 			}
-		}	
+			//Move path free
+			unitArray[to.getRow()][to.getColumn()] = u;
+			unitArray[from.getRow()][from.getColumn()] = null;
+
+			//Conquer city if city is there.
+			City c = cityArray[to.getRow()][to.getColumn()];
+			if(c != null){
+				c.setOwner(playerInTurn);
+				winner = this.winnerStrategy.getWinner(this);
+			}
+			return true;
+		}
 		return false;
 	}
 
@@ -162,25 +135,32 @@ public class GameImpl implements Game {
 
 	public void changeProductionInCityAt( Position p, String unitType ) {
 		City c = this.getCityAt(p);
+		Unit u = null;
 
 		if (unitType.equals(GameConstants.ARCHER)){
 			if (c.getMoney() >= GameConstants.archerCost){
 				c.setProduction(GameConstants.ARCHER);
 				c.setMoney(c.getMoney() - GameConstants.archerCost);
+				
+				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.ARCHER_DEFENSIVE_STRENGTH);
 			}  
 		} else if (unitType.equals(GameConstants.LEGION)){
 			if (c.getMoney() >= GameConstants.legionCost){
 				c.setProduction(GameConstants.LEGION);
 				c.setMoney(c.getMoney() - GameConstants.legionCost);
+				
+				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.LEGION_DEFENSIVE_STRENGTH);
 			}  
 		} else if (unitType.equals(GameConstants.SETTLER)){
 			if (c.getMoney() >= GameConstants.settlerCost){
 				c.setProduction(GameConstants.SETTLER);
 				c.setMoney(c.getMoney() - GameConstants.settlerCost);
+				
+				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.SETTLER_DEFENSIVE_STRENGTH);
 			}  
 		}
 
-		Unit u = new UnitImpl(this.playerInTurn, c.getProduction());
+		
 
 		//Place unit on tile, if not already occupied.
 		if(this.unitArray[p.getColumn()][p.getRow()] == null){
@@ -220,6 +200,10 @@ public class GameImpl implements Game {
 
 	public City[][] getAllCities(){
 		return cityArray;
+	}
+	
+	public void insertUnitAtPosition(Position p, Unit u){
+		this.unitArray[p.getRow()][p.getColumn()] = u;
 	}
 
 	public void insertCityAtPosition(Position p, Player player) {

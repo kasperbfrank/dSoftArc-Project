@@ -35,8 +35,7 @@ public class TestBetaCiv {
 	/** Fixture for betaCiv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(Player.RED, Player.BLUE, new BetaAgingStrategy(), new BetaWinnerStrategy(), new AlphaActionStrategy(), new AlphaWorldLayoutStrategy(),
-				new Position(1,1), new Position(4,1), worldLayout);
+		game = new GameImpl(Player.RED, Player.BLUE, new BetaAgingStrategy(), new BetaWinnerStrategy(), new AlphaActionStrategy(), new AlphaWorldLayoutStrategy());
 	}
 
 	// Aging Tests

@@ -9,7 +9,6 @@ public class AlphaActionStrategy implements ActionStrategy {
 
 	@Override
 	public void performAction(Game game, Position p) {
-		// TODO Auto-generated method stub
 
 	}
 

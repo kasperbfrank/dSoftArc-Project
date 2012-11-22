@@ -12,51 +12,36 @@ public class UnitImpl implements Unit{
 	private int attackingStrength;
 	private int defensiveStrength;
 	
-	public UnitImpl(Player owner, String type){
+	public UnitImpl(Player owner, String type, int defensiveStrength){
 		this.owner = owner;
 		this.type = type;
+		
+		this.defensiveStrength = defensiveStrength;
 	}
 	
 	@Override
 	public String getTypeString() {
-		// TODO Auto-generated method stub
 		return type;
 	}
 
 	@Override
 	public Player getOwner() {
-		// TODO Auto-generated method stub
 		return owner;
 	}
 
 	@Override
 	public int getMoveCount() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 
 	@Override
 	public int getDefensiveStrength() {
-		// TODO Auto-generated method stub
 		return defensiveStrength;
 	}
 
 	@Override
 	public int getAttackingStrength() {
-		// TODO Auto-generated method stub
 		return attackingStrength;
-	}
-
-	@Override
-	public void setDefensiveStrength(int ds) {
-		// TODO Auto-generated method stub
-		defensiveStrength = ds;
-	}
-
-	@Override
-	public void setAttackingStrength(int as) {
-		// TODO Auto-generated method stub
-		attackingStrength = as;
 	}
 
 }

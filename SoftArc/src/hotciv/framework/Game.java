@@ -127,6 +127,8 @@ public interface Game {
   
   public City[][] getAllCities();
   
+	public void insertUnitAtPosition(Position p, Unit u);
+  
   public void insertCityAtPosition(Position p, Player player);
 
 }

@@ -35,8 +35,7 @@ public class TestGammaCiv {
 	/** Fixture for GammaCiv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new GammaActionStrategy(), new AlphaWorldLayoutStrategy(),
-				new Position(1,1), new Position(4,1), worldLayout);
+		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new GammaActionStrategy(), new AlphaWorldLayoutStrategy());
 	}
 
 	@Test
@@ -55,10 +54,10 @@ public class TestGammaCiv {
 
 		game.performUnitActionAt(p);
 
-		assertEquals("Archer should now have double defensive strength", GameConstants.archerDS * 2, game.getUnitAt(p).getDefensiveStrength());
+		assertEquals("Archer should now have double defensive strength", GameConstants.ARCHER_DEFENSIVE_STRENGTH * 2, game.getUnitAt(p).getDefensiveStrength());
 
 		game.performUnitActionAt(p);
-		assertEquals("Archer should now have normal defensive strength", GameConstants.archerDS, game.getUnitAt(p).getDefensiveStrength());
+		assertEquals("Archer should now have normal defensive strength", GameConstants.ARCHER_DEFENSIVE_STRENGTH, game.getUnitAt(p).getDefensiveStrength());
 
 	}
 }

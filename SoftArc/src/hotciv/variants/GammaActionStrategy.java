@@ -1,5 +1,6 @@
 package hotciv.variants;
 
+import hotciv.common.UnitImpl;
 import hotciv.framework.ActionStrategy;
 import hotciv.framework.Game;
 import hotciv.framework.GameConstants;
@@ -10,15 +11,14 @@ public class GammaActionStrategy implements ActionStrategy {
 
 	@Override
 	public void performAction(Game game, Position p) {
-		// TODO Auto-generated method stub
 		Unit unit = game.getUnitAt(p);
 		
 		if(unit.getTypeString().equals(GameConstants.ARCHER)){
 			//Cast fortify/cancel fortify
-			if (unit.getDefensiveStrength() > GameConstants.archerDS) {
-				unit.setDefensiveStrength(unit.getDefensiveStrength()/2);
+			if (unit.getDefensiveStrength() > GameConstants.ARCHER_DEFENSIVE_STRENGTH) {
+				game.insertUnitAtPosition(p, new UnitImpl(game.getPlayerInTurn(), unit.getTypeString(), GameConstants.ARCHER_DEFENSIVE_STRENGTH));
 			} else {
-				unit.setDefensiveStrength(GameConstants.archerDS * 2);
+				game.insertUnitAtPosition(p, new UnitImpl(game.getPlayerInTurn(), unit.getTypeString(), GameConstants.ARCHER_DEFENSIVE_STRENGTH * 2));
 			}
 		}else if(unit.getTypeString().equals(GameConstants.SETTLER)){
 			//Build city at unit position

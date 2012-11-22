@@ -13,15 +13,33 @@ public class DeltaWorldLayoutStrategy implements WorldLayoutStrategy {
 	Tile[][] tileArray = new Tile[16][16];
 
 	@Override
-	public Tile[][] buildWord(Game game, Position redCityPosition,
-			Position blueCityPosition, String[] worldMap) {
+	public Tile[][] buildWord(Game game) {
 		
-		game.insertCityAtPosition(redCityPosition, Player.RED);
-		game.insertCityAtPosition(blueCityPosition, Player.BLUE);
+		String[] worldLayout = new String[] {
+				"OOOPPMPPPPPOOOOO",
+				"OOPHHPPPPFFFPPOO",
+				"OPPPPPMPPPOOOPPO",
+				"OPPMMMPPPPOOPPPP",
+				"OOOPFPPPHHPPPPOO",
+				"OPFPPFPPPPPHHPPO",
+				"OOOPPPOOOOOOOOOO",
+				"OPPPPPOPPPHPPMOO",
+				"OPPPPPOPPHPPPFOO",
+				"PFFFPPPPOPFFPPPP",
+				"PPPPPPPPOOOPPPPP",
+				"OPPMMMPPPPOOOOOO",
+				"OOPPPPPPFFPPPPOO",
+				"OOOOPPPPPPPPPOOO",
+				"OOPPPHHPPOOOOOOO",
+				"OOOOOPPPPPPPPPOO"
+			};
+		
+		game.insertCityAtPosition(new Position(8,12), Player.RED);
+		game.insertCityAtPosition(new Position(4,5), Player.BLUE);
 		
 		String line;
 	    for ( int r = 0; r < GameConstants.WORLDSIZE; r++ ) {
-	      line = worldMap[r];
+	      line = worldLayout[r];
 	      for ( int c = 0; c < GameConstants.WORLDSIZE; c++ ) {
 	        char tileChar = line.charAt(c);
 	        String type = "error";

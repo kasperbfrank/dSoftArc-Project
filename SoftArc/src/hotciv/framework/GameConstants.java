@@ -40,10 +40,10 @@ public class GameConstants {
   public static final int legionCost = 5;
   public static final int settlerCost = 15;
   //Attack/defense strength
-  public static final int archerAS = 10;
-  public static final int archerDS = 10;
-  public static final int settlerAS = 10;
-  public static final int settlerDS = 10;
-  public static final int legionAS = 10;
-  public static final int legionDS = 10;
+  public static final int ARCHER_ATTACKING_STRENGTH = 10;
+  public static final int ARCHER_DEFENSIVE_STRENGTH = 10;
+  public static final int SETTLER_ATTACKING_STRENGTH = 10;
+  public static final int SETTLER_DEFENSIVE_STRENGTH = 10;
+  public static final int LEGION_ATTACKING_STRENGTH = 10;
+  public static final int LEGION_DEFENSIVE_STRENGTH = 10;
 }

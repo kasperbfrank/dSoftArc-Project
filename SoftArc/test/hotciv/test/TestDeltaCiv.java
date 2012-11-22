@@ -34,30 +34,12 @@ public class TestDeltaCiv {
 	private Game game;
 	
 	// String[] Defining the world map where P = PLAINS, O = OCEAN, M = MOUNTAINS, F = FOREST, H = HILLS.
-	String[] worldLayout = new String[] {
-		"OOOPPMPPPPPOOOOO",
-		"OOPHHPPPPFFFPPOO",
-		"OPPPPPMPPPOOOPPO",
-		"OPPMMMPPPPOOPPPP",
-		"OOOPFPPPHHPPPPOO",
-		"OPFPPFPPPPPHHPPO",
-		"OOOPPPOOOOOOOOOO",
-		"OPPPPPOPPPHPPMOO",
-		"OPPPPPOPPHPPPFOO",
-		"PFFFPPPPOPFFPPPP",
-		"PPPPPPPPOOOPPPPP",
-		"OPPMMMPPPPOOOOOO",
-		"OOPPPPPPFFPPPPOO",
-		"OOOOPPPPPPPPPOOO",
-		"OOPPPHHPPOOOOOOO",
-		"OOOOOPPPPPPPPPOO"
-	};
+	
 	
 	/** Fixture for deltaciv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new AlphaActionStrategy(), new DeltaWorldLayoutStrategy(), 
-				new Position(8,12), new Position(4,5), worldLayout);
+		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new AlphaActionStrategy(), new DeltaWorldLayoutStrategy());
 	}
 	
 	@Test
