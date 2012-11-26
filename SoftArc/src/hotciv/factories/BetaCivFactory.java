@@ -19,27 +19,27 @@ import hotciv.variants.BetaWinnerStrategy;
 public class BetaCivFactory implements HotCivFactory {
 
 	@Override
-	public WinnerStrategy getWinnerStrategy() {
+	public WinnerStrategy createWinnerStrategy() {
 		return new BetaWinnerStrategy();
 	}
 
 	@Override
-	public WorldLayoutStrategy getWorldLayoutStrategy() {
+	public WorldLayoutStrategy createWorldLayoutStrategy() {
 		return new AlphaWorldLayoutStrategy();
 	}
 
 	@Override
-	public ActionStrategy getActionStrategy() {
+	public ActionStrategy createActionStrategy() {
 		return new AlphaActionStrategy();
 	}
 
 	@Override
-	public AgingStrategy getAgingStrategy() {
+	public AgingStrategy createAgingStrategy() {
 		return new BetaAgingStrategy();
 	}
 
 	@Override
-	public Iterator<Player> getPlayerIterator() {
+	public Iterator<Player> createPlayerIterator() {
 		
 		ArrayList<Player> playerList = new ArrayList<Player>();
 		playerList.add(Player.RED);

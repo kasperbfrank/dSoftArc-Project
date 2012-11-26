@@ -4,14 +4,14 @@ import java.util.Iterator;
 
 public interface HotCivFactory {
 
-	public WinnerStrategy getWinnerStrategy();
+	public WinnerStrategy createWinnerStrategy();
 	
-	public WorldLayoutStrategy getWorldLayoutStrategy();
+	public WorldLayoutStrategy createWorldLayoutStrategy();
 	
-	public ActionStrategy getActionStrategy();
+	public ActionStrategy createActionStrategy();
 	
-	public AgingStrategy getAgingStrategy();
+	public AgingStrategy createAgingStrategy();
 	
-	public Iterator<Player> getPlayerIterator();
+	public Iterator<Player> createPlayerIterator();
 	
 }

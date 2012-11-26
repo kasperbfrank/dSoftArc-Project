@@ -47,12 +47,12 @@ public class GameImpl implements Game {
 		
 		this.factory = factory;
 		
-		this.agingStrategy = factory.getAgingStrategy();
-		this.winnerStrategy = factory.getWinnerStrategy();
-		this.actionStrategy = factory.getActionStrategy();
-		this.worldLayoutStrategy = factory.getWorldLayoutStrategy();
+		this.agingStrategy = factory.createAgingStrategy();
+		this.winnerStrategy = factory.createWinnerStrategy();
+		this.actionStrategy = factory.createActionStrategy();
+		this.worldLayoutStrategy = factory.createWorldLayoutStrategy();
 		
-		playerIterator = factory.getPlayerIterator();
+		playerIterator = factory.createPlayerIterator();
 		playerInTurn = playerIterator.next();
 		
 		tileArray = worldLayoutStrategy.buildWord(this);
@@ -113,7 +113,7 @@ public class GameImpl implements Game {
 			playerInTurn = playerIterator.next();
 		}else{
 			//End of Round
-			playerIterator = factory.getPlayerIterator();
+			playerIterator = factory.createPlayerIterator();
 			playerInTurn = playerIterator.next();
 
 			age = agingStrategy.doAging(this.age);
