@@ -41,31 +41,21 @@ public class GameImpl implements Game {
 	private ActionStrategy actionStrategy;
 	private WorldLayoutStrategy worldLayoutStrategy;
 	
-	public GameImpl(Player p1, Player p2, AgingStrategy as, WinnerStrategy ws, ActionStrategy acs, WorldLayoutStrategy wls){
-		
-		playerList.add(p1);
-		playerList.add(p2);
-
-		this.agingStrategy = as;
-		this.winnerStrategy = ws;
-		this.actionStrategy = acs;
-		this.worldLayoutStrategy = wls;
-
-		playerInTurn = p1;
-
-		playerIterator = playerList.iterator();
-		playerIterator.next();
-		
-		tileArray = worldLayoutStrategy.buildWord(this);
-
-	}
+	private HotCivFactory factory;
 	
 	public GameImpl(HotCivFactory factory){
+		
+		this.factory = factory;
 		
 		this.agingStrategy = factory.getAgingStrategy();
 		this.winnerStrategy = factory.getWinnerStrategy();
 		this.actionStrategy = factory.getActionStrategy();
 		this.worldLayoutStrategy = factory.getWorldLayoutStrategy();
+		
+		playerIterator = factory.getPlayerIterator();
+		playerInTurn = playerIterator.next();
+		
+		tileArray = worldLayoutStrategy.buildWord(this);
 		
 	}
 
@@ -118,11 +108,12 @@ public class GameImpl implements Game {
 	}
 
 	public void endOfTurn() {
+				
 		if(playerIterator.hasNext()){
 			playerInTurn = playerIterator.next();
 		}else{
 			//End of Round
-			playerIterator = playerList.iterator();
+			playerIterator = factory.getPlayerIterator();
 			playerInTurn = playerIterator.next();
 
 			age = agingStrategy.doAging(this.age);

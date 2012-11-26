@@ -3,6 +3,7 @@ package hotciv.test;
 import hotciv.common.CityImpl;
 import hotciv.common.GameImpl;
 import hotciv.common.UnitImpl;
+import hotciv.factories.GammaCivFactory;
 import hotciv.framework.*;
 import hotciv.variants.AlphaAgingStrategy;
 import hotciv.variants.AlphaWinnerStrategy;
@@ -35,7 +36,7 @@ public class TestGammaCiv {
 	/** Fixture for GammaCiv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new GammaActionStrategy(), new AlphaWorldLayoutStrategy());
+		game = new GameImpl(new GammaCivFactory());
 	}
 
 	@Test

@@ -3,6 +3,7 @@ package hotciv.test;
 import hotciv.common.CityImpl;
 import hotciv.common.GameImpl;
 import hotciv.common.UnitImpl;
+import hotciv.factories.BetaCivFactory;
 import hotciv.framework.*;
 import hotciv.variants.AlphaActionStrategy;
 import hotciv.variants.AlphaWorldLayoutStrategy;
@@ -35,7 +36,7 @@ public class TestBetaCiv {
 	/** Fixture for betaCiv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(Player.RED, Player.BLUE, new BetaAgingStrategy(), new BetaWinnerStrategy(), new AlphaActionStrategy(), new AlphaWorldLayoutStrategy());
+		game = new GameImpl(new BetaCivFactory());
 	}
 
 	// Aging Tests

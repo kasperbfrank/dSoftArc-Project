@@ -3,6 +3,7 @@ package hotciv.test;
 import hotciv.common.CityImpl;
 import hotciv.common.GameImpl;
 import hotciv.common.UnitImpl;
+import hotciv.factories.DeltaCivFactory;
 import hotciv.framework.*;
 import hotciv.variants.AlphaActionStrategy;
 import hotciv.variants.AlphaAgingStrategy;
@@ -39,7 +40,7 @@ public class TestDeltaCiv {
 	/** Fixture for deltaciv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(Player.RED, Player.BLUE, new AlphaAgingStrategy(), new AlphaWinnerStrategy(), new AlphaActionStrategy(), new DeltaWorldLayoutStrategy());
+		game = new GameImpl(new DeltaCivFactory());
 	}
 	
 	@Test

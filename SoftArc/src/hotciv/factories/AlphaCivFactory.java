@@ -1,15 +1,19 @@
 package hotciv.factories;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+
 import hotciv.framework.ActionStrategy;
 
 import hotciv.framework.AgingStrategy;
 import hotciv.framework.HotCivFactory;
+import hotciv.framework.Player;
 import hotciv.framework.WinnerStrategy;
 import hotciv.framework.WorldLayoutStrategy;
 
 import hotciv.variants.*;
 
-public class AlphaCivStrategy implements HotCivFactory {
+public class AlphaCivFactory implements HotCivFactory {
 
 	@Override
 	public WinnerStrategy getWinnerStrategy() {
@@ -29,6 +33,16 @@ public class AlphaCivStrategy implements HotCivFactory {
 	@Override
 	public AgingStrategy getAgingStrategy() {
 		return new AlphaAgingStrategy();
+	}
+	
+	@Override
+	public Iterator<Player> getPlayerIterator() {
+		
+		ArrayList<Player> playerList = new ArrayList<Player>();
+		playerList.add(Player.RED);
+		playerList.add(Player.BLUE);
+		
+		return playerList.iterator();
 	}
 
 }
