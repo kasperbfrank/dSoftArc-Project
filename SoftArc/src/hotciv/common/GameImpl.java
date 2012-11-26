@@ -59,6 +59,15 @@ public class GameImpl implements Game {
 		tileArray = worldLayoutStrategy.buildWord(this);
 
 	}
+	
+	public GameImpl(HotCivFactory factory){
+		
+		this.agingStrategy = factory.getAgingStrategy();
+		this.winnerStrategy = factory.getWinnerStrategy();
+		this.actionStrategy = factory.getActionStrategy();
+		this.worldLayoutStrategy = factory.getWorldLayoutStrategy();
+		
+	}
 
 	public Tile getTileAt( Position p ) {
 		return tileArray[p.getRow()][p.getColumn()];
