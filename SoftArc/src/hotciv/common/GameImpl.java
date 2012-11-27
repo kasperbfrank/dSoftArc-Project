@@ -160,21 +160,21 @@ public class GameImpl implements Game {
 				c.setProduction(GameConstants.ARCHER);
 				c.setMoney(c.getMoney() - GameConstants.archerCost);
 				
-				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.ARCHER_DEFENSIVE_STRENGTH);
+				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.ARCHER_DEFENSIVE_STRENGTH, GameConstants.ARCHER_ATTACKING_STRENGTH);
 			}  
 		} else if (unitType.equals(GameConstants.LEGION)){
 			if (c.getMoney() >= GameConstants.legionCost){
 				c.setProduction(GameConstants.LEGION);
 				c.setMoney(c.getMoney() - GameConstants.legionCost);
 				
-				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.LEGION_DEFENSIVE_STRENGTH);
+				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.LEGION_DEFENSIVE_STRENGTH, GameConstants.LEGION_ATTACKING_STRENGTH);
 			}  
 		} else if (unitType.equals(GameConstants.SETTLER)){
 			if (c.getMoney() >= GameConstants.settlerCost){
 				c.setProduction(GameConstants.SETTLER);
 				c.setMoney(c.getMoney() - GameConstants.settlerCost);
 				
-				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.SETTLER_DEFENSIVE_STRENGTH);
+				u = new UnitImpl(this.playerInTurn, c.getProduction(), GameConstants.SETTLER_DEFENSIVE_STRENGTH, GameConstants.SETTLER_ATTACKING_STRENGTH);
 			}  
 		}
 

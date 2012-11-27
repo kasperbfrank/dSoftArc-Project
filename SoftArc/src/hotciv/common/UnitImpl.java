@@ -12,11 +12,12 @@ public class UnitImpl implements Unit{
 	private int attackingStrength;
 	private int defensiveStrength;
 	
-	public UnitImpl(Player owner, String type, int defensiveStrength){
+	public UnitImpl(Player owner, String type, int defensiveStrength, int attackingStrength){
 		this.owner = owner;
 		this.type = type;
 		
 		this.defensiveStrength = defensiveStrength;
+		this.attackingStrength = attackingStrength;
 	}
 	
 	@Override

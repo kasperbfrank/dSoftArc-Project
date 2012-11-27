@@ -143,7 +143,7 @@ public class TestAlphaCiv {
 
 	@Test
 	public void shouldOnlyMoveUnits(){
-		Unit u = new UnitImpl(Player.RED, GameConstants.ARCHER, GameConstants.ARCHER_DEFENSIVE_STRENGTH);
+		Unit u = new UnitImpl(Player.RED, GameConstants.ARCHER, GameConstants.ARCHER_DEFENSIVE_STRENGTH, GameConstants.ARCHER_ATTACKING_STRENGTH);
 
 		Position to = new Position(4,3);
 		Position from = new Position(0,0);
