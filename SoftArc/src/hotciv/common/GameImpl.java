@@ -101,17 +101,17 @@ public class GameImpl implements Game {
 			//If enemy unit on tile. 
 			if (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn)){
 				if(this.attack(from, to) == false){
-					unitArray[from.getColumn()][from.getRow()] = null;
+					this.deleteUnitAtPosition(from);
 					return false;
 				}
 			}
 			
 			//Move path free
-			unitArray[to.getRow()][to.getColumn()] = u;
-			unitArray[from.getRow()][from.getColumn()] = null;
+			this.insertUnitAtPosition(to, u);
+			this.deleteUnitAtPosition(from);
 
 			//Conquer city if city is there.
-			City c = cityArray[to.getRow()][to.getColumn()];
+			City c = this.getCityAt(to);
 			if(c != null){
 				c.setOwner(playerInTurn);
 				winner = this.winnerStrategy.getWinner(this);
@@ -182,8 +182,8 @@ public class GameImpl implements Game {
 		}else{
 			Position[] pArray = this.getTilesAround(p);
 			for(Position pos : pArray){
-				if(this.unitArray[pos.getColumn()][pos.getRow()] == null){
-					this.unitArray[pos.getColumn()][pos.getRow()] = u;
+				if(this.getUnitAt(pos) == null){
+					this.insertUnitAtPosition(pos, u);
 				}
 			}
 		}
@@ -219,6 +219,11 @@ public class GameImpl implements Game {
 	public void insertUnitAtPosition(Position p, Unit u){
 		this.unitArray[p.getRow()][p.getColumn()] = u;
 	}
+	
+	@Override
+	public void deleteUnitAtPosition(Position p) {
+		this.unitArray[p.getColumn()][p.getRow()] = null;
+	}
 
 	public void insertCityAtPosition(Position p, Player player) {
 		cityArray[p.getRow()][p.getColumn()] = new CityImpl(player);
@@ -227,6 +232,8 @@ public class GameImpl implements Game {
 
 	@Override
 	public boolean attack(Position attacker, Position defender) {
+		Unit a = this.getUnitAt(attacker);
+		Unit d = this.getUnitAt(defender);
 		return false;
 	}
 }

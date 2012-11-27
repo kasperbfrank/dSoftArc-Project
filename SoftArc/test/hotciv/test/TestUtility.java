@@ -224,8 +224,11 @@ class GameStubForBattleTesting implements Game {
 
 	}
 	@Override
-	public void attack(Position attacker, Position defender) {
-		// TODO Auto-generated method stub
+	public boolean attack(Position attacker, Position defender) {
+		return false;
+	}
+	@Override
+	public void deleteUnitAtPosition(Position p) {
 		
 	}
 }
