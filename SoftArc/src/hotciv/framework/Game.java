@@ -1,5 +1,8 @@
 package hotciv.framework;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import hotciv.common.CityImpl;
 
 /** Game is the central interface allowing a client to access and
@@ -134,5 +137,7 @@ public interface Game {
 	public void insertCityAtPosition(Position p, Player player);
 	
 	public boolean attack(Position attacker, Position defender);
+	
+	public HashMap<Player, Integer> getBattlesWon();
 
 }

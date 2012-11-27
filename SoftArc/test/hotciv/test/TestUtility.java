@@ -231,4 +231,8 @@ class GameStubForBattleTesting implements Game {
 	public void deleteUnitAtPosition(Position p) {
 		
 	}
+	@Override
+	public HashMap<Player, Integer> getBattlesWon() {
+		return null;
+	}
 }

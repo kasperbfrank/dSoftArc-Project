@@ -2,6 +2,7 @@ package hotciv.common;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Random;
 
@@ -27,7 +28,7 @@ import hotciv.framework.*;
 public class GameImpl implements Game {
 
 	private ArrayList<Player> playerList = new ArrayList<Player>();
-	private ArrayList<Player> battlesWon = new ArrayList<Player>();
+	private HashMap<Player, Integer> battlesWon = new HashMap<Player, Integer>();
 	
 	private Player playerInTurn;
 	private Iterator<Player> playerIterator;
@@ -245,10 +246,16 @@ public class GameImpl implements Game {
 		
 		//Calculate the winner, false if defender wins, true if attacker does.
 		if (aStrength * (rng.nextInt(6) + 1) > dStrength * (rng.nextInt(6) + 1)) {
-			battlesWon.add(a.getOwner());
+			int won = (Integer)battlesWon.get(a.getOwner()).intValue();
+			battlesWon.put(a.getOwner(), won + 1);
 			return true;
 		}
 		
 		return false;
+	}
+
+	@Override
+	public HashMap<Player, Integer> getBattlesWon() {
+		return this.battlesWon;
 	}
 }
