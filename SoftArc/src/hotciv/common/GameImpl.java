@@ -210,4 +210,9 @@ public class GameImpl implements Game {
 		cityArray[p.getRow()][p.getColumn()] = new CityImpl(player);
 		unitArray[p.getRow()][p.getColumn()] = null;
 	}
+
+	@Override
+	public void attack(Position attacker, Position defender) {
+		
+	}
 }
