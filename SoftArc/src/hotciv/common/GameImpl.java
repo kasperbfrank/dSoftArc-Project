@@ -3,6 +3,7 @@ package hotciv.common;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.Random;
 
 import hotciv.framework.*;
 
@@ -25,7 +26,9 @@ import hotciv.framework.*;
 
 public class GameImpl implements Game {
 
-	private ArrayList<Player> playerList = new ArrayList();
+	private ArrayList<Player> playerList = new ArrayList<Player>();
+	private ArrayList<Player> battlesWon = new ArrayList<Player>();
+	
 	private Player playerInTurn;
 	private Iterator<Player> playerIterator;
 	private int age = -4000;
@@ -234,6 +237,18 @@ public class GameImpl implements Game {
 	public boolean attack(Position attacker, Position defender) {
 		Unit a = this.getUnitAt(attacker);
 		Unit d = this.getUnitAt(defender);
+		
+		Random rng = new Random();
+		
+		int aStrength = a.getAttackingStrength() + Utility.getFriendlySupport(this, attacker, a.getOwner()) + Utility.getTerrainFactor(this, attacker);
+		int dStrength = d.getDefensiveStrength() + Utility.getFriendlySupport(this, defender, a.getOwner()) + Utility.getTerrainFactor(this, defender);
+		
+		//Calculate the winner, false if defender wins, true if attacker does.
+		if (aStrength * (rng.nextInt(6) + 1) > dStrength * (rng.nextInt(6) + 1)) {
+			battlesWon.add(a.getOwner());
+			return true;
+		}
+		
 		return false;
 	}
 }
