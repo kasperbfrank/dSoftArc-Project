@@ -223,4 +223,9 @@ class GameStubForBattleTesting implements Game {
 	public void insertCityAtPosition(Position p, Player player) {
 
 	}
+	@Override
+	public void attack(Position attacker, Position defender) {
+		// TODO Auto-generated method stub
+		
+	}
 }
