@@ -35,15 +35,5 @@ public class EpsilonCivFactory implements HotCivFactory {
 	public AgingStrategy createAgingStrategy() {
 		return new AlphaAgingStrategy();
 	}
-	
-	@Override
-	public Iterator<Player> createPlayerIterator() {
-		
-		ArrayList<Player> playerList = new ArrayList<Player>();
-		playerList.add(Player.RED);
-		playerList.add(Player.BLUE);
-		
-		return playerList.iterator();
-	}
 
 }
