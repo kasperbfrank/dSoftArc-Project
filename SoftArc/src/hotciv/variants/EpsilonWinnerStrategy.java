@@ -19,7 +19,7 @@ public class EpsilonWinnerStrategy implements WinnerStrategy {
 		while (i.hasNext()) {
 			Map.Entry me = (Map.Entry)i.next();
 			if ((Integer)me.getValue() == 3) {
-				return (Player) me.getKey();
+				return (Player)me.getKey();
 			};
 		}
 		return null;
