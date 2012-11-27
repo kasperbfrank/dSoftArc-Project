@@ -34,6 +34,7 @@ public class GameImpl implements Game {
 	private Iterator<Player> playerIterator;
 	private int age = -4000;
 	private Player winner;
+	private int round = 0;
 
 	//Position.
 	private Unit[][] unitArray = new Unit[GameConstants.WORLDSIZE][GameConstants.WORLDSIZE];
@@ -93,7 +94,7 @@ public class GameImpl implements Game {
 	public boolean moveUnit( Position from, Position to ) {
 
 		Tile t = getTileAt(to);
-		Unit u = unitArray[from.getRow()][from.getColumn()];
+		Unit u = getUnitAt(from);
 		
 		if (u != null && this.getUnitAt(from).getOwner().equals(playerInTurn)) {
 			
@@ -133,6 +134,8 @@ public class GameImpl implements Game {
 			//End of Round
 			playerIterator = playerList.iterator();
 			playerInTurn = playerIterator.next();
+			
+			round++;
 
 			age = agingStrategy.doAging(this.age);
 
@@ -257,5 +260,11 @@ public class GameImpl implements Game {
 	@Override
 	public HashMap<Player, Integer> getBattlesWon() {
 		return this.battlesWon;
+	}
+
+	@Override
+	public int getRound() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

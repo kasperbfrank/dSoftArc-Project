@@ -235,4 +235,9 @@ class GameStubForBattleTesting implements Game {
 	public HashMap<Player, Integer> getBattlesWon() {
 		return null;
 	}
+	@Override
+	public int getRound() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
 }

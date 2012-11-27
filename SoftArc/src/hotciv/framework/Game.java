@@ -139,5 +139,7 @@ public interface Game {
 	public boolean attack(Position attacker, Position defender);
 	
 	public HashMap<Player, Integer> getBattlesWon();
+	
+	public int getRound();
 
 }
