@@ -92,9 +92,20 @@ public class GameImpl implements Game {
 		Unit u = unitArray[from.getRow()][from.getColumn()];
 		
 		if (u != null && this.getUnitAt(from).getOwner().equals(playerInTurn)) {
+			
+			//If friendly unit on tile or mountains.
 			if (t.getTypeString().equals(GameConstants.MOUNTAINS) || (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn))){
 				return false;
 			}
+			
+			//If enemy unit on tile. 
+			if (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn)){
+				if(this.attack(from, to) == false){
+					unitArray[from.getColumn()][from.getRow()] = null;
+					return false;
+				}
+			}
+			
 			//Move path free
 			unitArray[to.getRow()][to.getColumn()] = u;
 			unitArray[from.getRow()][from.getColumn()] = null;
@@ -215,7 +226,7 @@ public class GameImpl implements Game {
 	}
 
 	@Override
-	public void attack(Position attacker, Position defender) {
-		
+	public boolean attack(Position attacker, Position defender) {
+		return false;
 	}
 }

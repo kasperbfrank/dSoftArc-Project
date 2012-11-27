@@ -131,6 +131,6 @@ public interface Game {
 
 	public void insertCityAtPosition(Position p, Player player);
 	
-	public void attack(Position attacker, Position defender);
+	public boolean attack(Position attacker, Position defender);
 
 }
