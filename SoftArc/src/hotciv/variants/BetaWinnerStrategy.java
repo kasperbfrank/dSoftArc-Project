@@ -10,7 +10,6 @@ public class BetaWinnerStrategy implements WinnerStrategy {
 	@Override
 	public Player getWinner(Game game) {
 		boolean win = true;
-		
 		City[][] cityArray = game.getAllCities();
 		
 		for(City[] cArray : cityArray){

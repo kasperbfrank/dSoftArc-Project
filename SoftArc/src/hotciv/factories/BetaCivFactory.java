@@ -5,12 +5,14 @@ import java.util.Iterator;
 
 import hotciv.framework.ActionStrategy;
 import hotciv.framework.AgingStrategy;
+import hotciv.framework.AttackStrategy;
 import hotciv.framework.HotCivFactory;
 import hotciv.framework.Player;
 import hotciv.framework.WinnerStrategy;
 import hotciv.framework.WorldLayoutStrategy;
 import hotciv.variants.AlphaActionStrategy;
 import hotciv.variants.AlphaAgingStrategy;
+import hotciv.variants.AlphaAttackStrategy;
 import hotciv.variants.AlphaWinnerStrategy;
 import hotciv.variants.AlphaWorldLayoutStrategy;
 import hotciv.variants.BetaAgingStrategy;
@@ -36,6 +38,11 @@ public class BetaCivFactory implements HotCivFactory {
 	@Override
 	public AgingStrategy createAgingStrategy() {
 		return new BetaAgingStrategy();
+	}
+
+	@Override
+	public AttackStrategy createAttackStrategy() {
+		return new AlphaAttackStrategy();
 	}
 
 }

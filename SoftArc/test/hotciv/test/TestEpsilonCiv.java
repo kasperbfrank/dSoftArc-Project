@@ -10,6 +10,7 @@ import hotciv.common.UnitImpl;
 import hotciv.common.Utility;
 import hotciv.factories.EpsilonCivFactory;
 import hotciv.framework.*;
+import hotciv.variants.EpsilonAttackStrategy;
 import hotciv.variants.EpsilonWinnerStrategy;
 
 import org.junit.*;
@@ -50,7 +51,6 @@ public class TestEpsilonCiv {
 	@Test
 	public void afterThreeSuccessfulAttacksGameIsWon(){
 		game.moveUnit(new Position(3,3), new Position(4,4));
-		
 		assertEquals("After 3 successful attacks, RED wins the game", Player.RED, game.getWinner());
 	}
 	
@@ -64,8 +64,11 @@ class GameStubForAttackTesting implements Game{
 
 	private HashMap<Player, Integer> battlesWon = new HashMap<Player, Integer>();
 	private Player playerInTurn;
+	private AttackStrategy attackStrategy;
 	
 	public GameStubForAttackTesting(){
+		attackStrategy = new fixedEpsilonAttackStrategy();
+		
 		battlesWon.put(Player.RED, 2);
 		battlesWon.put(Player.BLUE, 2);
 		
@@ -205,22 +208,7 @@ class GameStubForAttackTesting implements Game{
 
 	@Override
 	public boolean attack(Position attacker, Position defender) {
-		Unit a = this.getUnitAt(attacker);
-		Unit d = this.getUnitAt(defender);
-		
-		Random rng = new Random();
-		
-		int aStrength = 10;
-		int dStrength = 1;
-		
-		//Calculate the winner, false if defender wins, true if attacker does.
-		if (aStrength * (rng.nextInt(6) + 1) > dStrength * (rng.nextInt(6) + 1)) {
-			int won = (Integer)battlesWon .get(a.getOwner()).intValue();
-			battlesWon.put(a.getOwner(), won + 1);
-			return true;
-		}
-		
-		return false;
+		return attackStrategy.attack(this, attacker, defender);
 	}
 
 	@Override
@@ -230,8 +218,36 @@ class GameStubForAttackTesting implements Game{
 
 	@Override
 	public int getRound() {
-		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	@Override
+	public void incrementBattlesWon(Player player) {
+		int won = this.getBattlesWon().get(player).intValue();
+		battlesWon.put(player, won + 1);
+	}
+	
+}
+
+class fixedEpsilonAttackStrategy implements AttackStrategy {
+
+	@Override
+	public boolean attack(Game game, Position attacker, Position defender) {
+		Unit a = game.getUnitAt(attacker);
+		Unit d = game.getUnitAt(defender);
+		
+		Random rng = new Random();
+		
+		int aStrength = 10;
+		int dStrength = 1;
+		
+		//Calculate the winner, false if defender wins, true if attacker does.
+		if (aStrength * (rng.nextInt(6) + 1) > dStrength * (rng.nextInt(6) + 1)) {
+			game.incrementBattlesWon(a.getOwner());
+			return true;
+		}
+		
+		return false;
 	}
 	
 }

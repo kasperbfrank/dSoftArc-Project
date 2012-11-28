@@ -237,7 +237,12 @@ class GameStubForBattleTesting implements Game {
 	}
 	@Override
 	public int getRound() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
+	@Override
+	public void incrementBattlesWon(Player player) {
+		
+	}
+	
+	
 }

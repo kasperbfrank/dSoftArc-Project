@@ -140,6 +140,8 @@ public interface Game {
 	
 	public HashMap<Player, Integer> getBattlesWon();
 	
+	public void incrementBattlesWon(Player player);
+	
 	public int getRound();
 
 }

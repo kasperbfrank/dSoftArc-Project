@@ -45,6 +45,7 @@ public class GameImpl implements Game {
 	private WinnerStrategy winnerStrategy;
 	private ActionStrategy actionStrategy;
 	private WorldLayoutStrategy worldLayoutStrategy;
+	private AttackStrategy attackStrategy;
 	
 	private HotCivFactory factory;
 	
@@ -56,6 +57,7 @@ public class GameImpl implements Game {
 		this.winnerStrategy = factory.createWinnerStrategy();
 		this.actionStrategy = factory.createActionStrategy();
 		this.worldLayoutStrategy = factory.createWorldLayoutStrategy();
+		this.attackStrategy = factory.createAttackStrategy();
 		
 		playerList.add(Player.RED);
 		playerList.add(Player.BLUE);
@@ -239,22 +241,7 @@ public class GameImpl implements Game {
 
 	@Override
 	public boolean attack(Position attacker, Position defender) {
-		Unit a = this.getUnitAt(attacker);
-		Unit d = this.getUnitAt(defender);
-		
-		Random rng = new Random();
-		
-		int aStrength = a.getAttackingStrength() + Utility.getFriendlySupport(this, attacker, a.getOwner()) + Utility.getTerrainFactor(this, attacker);
-		int dStrength = d.getDefensiveStrength() + Utility.getFriendlySupport(this, defender, a.getOwner()) + Utility.getTerrainFactor(this, defender);
-		
-		//Calculate the winner, false if defender wins, true if attacker does.
-		if (aStrength * (rng.nextInt(6) + 1) > dStrength * (rng.nextInt(6) + 1)) {
-			int won = (Integer)battlesWon.get(a.getOwner()).intValue();
-			battlesWon.put(a.getOwner(), won + 1);
-			return true;
-		}
-		
-		return false;
+		return attackStrategy.attack(this, attacker, defender);
 	}
 
 	@Override
@@ -264,7 +251,12 @@ public class GameImpl implements Game {
 
 	@Override
 	public int getRound() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
+
+	@Override
+	public void incrementBattlesWon(Player player) {
+		int won = this.getBattlesWon().get(player).intValue();
+		battlesWon.put(player, won + 1);
+	}	
 }

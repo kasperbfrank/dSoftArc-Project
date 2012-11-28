@@ -11,5 +11,7 @@ public interface HotCivFactory {
 	public ActionStrategy createActionStrategy();
 	
 	public AgingStrategy createAgingStrategy();
+	
+	public AttackStrategy createAttackStrategy();
 		
 }

@@ -6,6 +6,7 @@ import java.util.Iterator;
 import hotciv.framework.ActionStrategy;
 
 import hotciv.framework.AgingStrategy;
+import hotciv.framework.AttackStrategy;
 import hotciv.framework.HotCivFactory;
 import hotciv.framework.Player;
 import hotciv.framework.WinnerStrategy;
@@ -33,6 +34,12 @@ public class AlphaCivFactory implements HotCivFactory {
 	@Override
 	public AgingStrategy createAgingStrategy() {
 		return new AlphaAgingStrategy();
+	}
+
+	@Override
+	public AttackStrategy createAttackStrategy() {
+		// TODO Auto-generated method stub
+		return new AlphaAttackStrategy();
 	}
 
 }
