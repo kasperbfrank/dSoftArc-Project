@@ -107,7 +107,7 @@ public class GameImpl implements Game {
 			
 			//If enemy unit on tile. 
 			if (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn)){
-				if(this.attack(from, to) == false){
+				if(this.attackStrategy.attack(this, from, to) == false){
 					this.deleteUnitAtPosition(from);
 					return false;
 				}
@@ -237,11 +237,6 @@ public class GameImpl implements Game {
 	public void insertCityAtPosition(Position p, Player player) {
 		cityArray[p.getRow()][p.getColumn()] = new CityImpl(player);
 		unitArray[p.getRow()][p.getColumn()] = null;
-	}
-
-	@Override
-	public boolean attack(Position attacker, Position defender) {
-		return attackStrategy.attack(this, attacker, defender);
 	}
 
 	@Override

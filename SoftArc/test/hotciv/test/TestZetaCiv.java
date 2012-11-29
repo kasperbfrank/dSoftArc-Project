@@ -191,7 +191,7 @@ class GameStubForWinnerAndAttackStrategyTesting implements Game{
 		
 		Unit u = this.getUnitAt(new Position(3,3));
 		
-		if(this.attack(from, to) == false){
+		if(this.attackStrategy.attack(this, from, to) == false){
 			return false;
 		}
 			
@@ -246,11 +246,6 @@ class GameStubForWinnerAndAttackStrategyTesting implements Game{
 	@Override
 	public void insertCityAtPosition(Position p, Player player) {
 		cityArray[p.getRow()][p.getColumn()] = new CityImpl(player);
-	}
-
-	@Override
-	public boolean attack(Position attacker, Position defender) {
-		return attackStrategy.attack(this, attacker, defender);
 	}
 
 	@Override

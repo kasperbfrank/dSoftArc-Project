@@ -135,9 +135,7 @@ public interface Game {
 	public void deleteUnitAtPosition(Position p);
 
 	public void insertCityAtPosition(Position p, Player player);
-	
-	public boolean attack(Position attacker, Position defender);
-	
+		
 	public HashMap<Player, Integer> getBattlesWon();
 	
 	public void incrementBattlesWon(Player player);

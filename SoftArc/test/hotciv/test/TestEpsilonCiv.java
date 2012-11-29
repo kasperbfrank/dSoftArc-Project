@@ -151,7 +151,7 @@ class GameStubForAttackTesting implements Game{
 		
 		Unit u = this.getUnitAt(new Position(3,3));
 		
-		if(this.attack(from, to) == false){
+		if(this.attackStrategy.attack(this, from, to) == false){
 			return false;
 		}
 			
@@ -204,11 +204,6 @@ class GameStubForAttackTesting implements Game{
 	public void insertCityAtPosition(Position p, Player player) {
 		// TODO Auto-generated method stub
 		
-	}
-
-	@Override
-	public boolean attack(Position attacker, Position defender) {
-		return attackStrategy.attack(this, attacker, defender);
 	}
 
 	@Override

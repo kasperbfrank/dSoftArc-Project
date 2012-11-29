@@ -224,10 +224,6 @@ class GameStubForBattleTesting implements Game {
 
 	}
 	@Override
-	public boolean attack(Position attacker, Position defender) {
-		return false;
-	}
-	@Override
 	public void deleteUnitAtPosition(Position p) {
 		
 	}
