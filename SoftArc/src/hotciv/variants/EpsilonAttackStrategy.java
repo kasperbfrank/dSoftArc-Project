@@ -15,8 +15,6 @@ public class EpsilonAttackStrategy implements AttackStrategy {
 	public boolean attack(Game game, Position attacker, Position defender) {
 		Unit a = game.getUnitAt(attacker);
 		Unit d = game.getUnitAt(defender);
-		System.out.println(a.getTypeString());
-		System.out.println(d.getTypeString());
 		
 		Random rng = new Random();
 		
@@ -25,7 +23,6 @@ public class EpsilonAttackStrategy implements AttackStrategy {
 		
 		//Calculate the winner, false if defender wins, true if attacker does.
 		if (aStrength * (rng.nextInt(6) + 1) > dStrength * (rng.nextInt(6) + 1)) {
-			System.out.println("OWNER: " + a.getOwner());
 			game.incrementBattlesWon(a.getOwner());
 			return true;
 		}
