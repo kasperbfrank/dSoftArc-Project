@@ -15,12 +15,13 @@ import hotciv.variants.AlphaAgingStrategy;
 import hotciv.variants.AlphaWinnerStrategy;
 import hotciv.variants.AlphaWorldLayoutStrategy;
 import hotciv.variants.EpsilonAttackStrategy;
+import hotciv.variants.EpsilonWinnerStrategy;
 
 public class EpsilonCivFactory implements HotCivFactory {
 
 	@Override
 	public WinnerStrategy createWinnerStrategy() {
-		return new AlphaWinnerStrategy();
+		return new EpsilonWinnerStrategy();
 	}
 
 	@Override
