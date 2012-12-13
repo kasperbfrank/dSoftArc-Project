@@ -162,7 +162,8 @@ public class TestAlphaCiv {
 		Position to = new Position(3,2);
 
 		//Red Archer
-		Position from = new Position(2,0);
+		game.insertUnitAtPosition(new Position(3,1), new UnitImpl(Player.RED, GameConstants.ARCHER, 1, 1));
+		Position from = new Position(3,1);
 
 		//Moving Red Archer to Blue Legion makes the red unit defeat his blue opponent meaning the red player is victorious..
 		game.moveUnit(from, to);

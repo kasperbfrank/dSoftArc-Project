@@ -113,7 +113,8 @@ public class TestBetaCiv {
 	//Winning tests
 	@Test
 	public void playerWinsWhenOwningAllCities(){
-		Position from = new Position(2,0);
+		game.insertUnitAtPosition(new Position(4,0), new UnitImpl(Player.RED, GameConstants.ARCHER, 1, 1));
+		Position from = new Position(4,0);
 		Position to = new Position(4,1);
 
 		game.moveUnit(from, to);

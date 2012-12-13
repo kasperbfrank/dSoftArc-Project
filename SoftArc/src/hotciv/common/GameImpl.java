@@ -98,32 +98,37 @@ public class GameImpl implements Game {
 		Tile t = getTileAt(to);
 		Unit u = getUnitAt(from);
 		
-		if (u != null && this.getUnitAt(from).getOwner().equals(playerInTurn)) {
-			
-			//If friendly unit on tile or mountains.
-			if (t.getTypeString().equals(GameConstants.MOUNTAINS) || (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn))){
-				return false;
-			}
-			
-			//If enemy unit on tile. 
-			if (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn)){
-				if(this.attackStrategy.attack(this, from, to) == false){
-					this.deleteUnitAtPosition(from);
+		int distanceY = Math.abs(from.getRow() - to.getRow());
+		int distanceX = Math.abs(from.getColumn() - to.getColumn());
+		
+		if ((distanceX == 1 && distanceY == 1) || (distanceX == 1 && distanceY == 0) || (distanceX == 0 && distanceY == 1)) {
+			if (u != null && this.getUnitAt(from).getOwner().equals(playerInTurn)) {
+				
+				//If friendly unit on tile or mountains.
+				if (t.getTypeString().equals(GameConstants.MOUNTAINS) || (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn))){
 					return false;
 				}
-			}
-			
-			//Move path free
-			this.insertUnitAtPosition(to, u);
-			this.deleteUnitAtPosition(from);
+				
+				//If enemy unit on tile. 
+				if (this.getUnitAt(to) != null && this.getUnitAt(to).getOwner().equals(playerInTurn)){
+					if(this.attackStrategy.attack(this, from, to) == false){
+						this.deleteUnitAtPosition(from);
+						return false;
+					}
+				}
+				
+				//Move path free
+				this.insertUnitAtPosition(to, u);
+				this.deleteUnitAtPosition(from);
 
-			//Conquer city if city is there.
-			City c = this.getCityAt(to);
-			if(c != null){
-				c.setOwner(playerInTurn);
-				winner = this.winnerStrategy.getWinner(this);
+				//Conquer city if city is there.
+				City c = this.getCityAt(to);
+				if(c != null){
+					c.setOwner(playerInTurn);
+					winner = this.winnerStrategy.getWinner(this);
+				}
+				return true;
 			}
-			return true;
 		}
 		return false;
 	}
