@@ -113,5 +113,6 @@ public class LogDecorator implements Game{
 	public int getRound() {
 		return game.getRound();
 	}
+	
 
 }
