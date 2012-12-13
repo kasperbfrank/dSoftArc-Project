@@ -16,22 +16,22 @@ public class DeltaWorldLayoutStrategy implements WorldLayoutStrategy {
 	public Tile[][] buildWord(Game game) {
 		
 		String[] worldLayout = new String[] {
-				"OOOPPMPPPPPOOOOO",
-				"OOPHHPPPPFFFPPOO",
-				"OPPPPPMPPPOOOPPO",
-				"OPPMMMPPPPOOPPPP",
-				"OOOPFPPPHHPPPPOO",
-				"OPFPPFPPPPPHHPPO",
-				"OOOPPPOOOOOOOOOO",
-				"OPPPPPOPPPHPPMOO",
-				"OPPPPPOPPHPPPFOO",
-				"PFFFPPPPOPFFPPPP",
-				"PPPPPPPPOOOPPPPP",
-				"OPPMMMPPPPOOOOOO",
-				"OOPPPPPPFFPPPPOO",
-				"OOOOPPPPPPPPPOOO",
-				"OOPPPHHPPOOOOOOO",
-				"OOOOOPPPPPPPPPOO"
+				"...ooMooooo.....",
+				"..ohhoooofffoo..",
+				".oooooMooo...oo.",
+				".ooMMMoooo..oooo",
+				"...ofooohhoooo..",
+				".ofoofooooohhoo.",
+				"...ooo..........",
+				".ooooo.ooohooM..",
+				".ooooo.oohooof..",
+				"offfoooo.offoooo",
+				"oooooooo...ooooo",
+				".ooMMMoooo......",
+				"..ooooooffoooo..",
+				"....ooooooooo...",
+				"..ooohhoo.......",
+				".....ooooooooo.."
 			};
 		
 		game.insertCityAtPosition(new Position(8,12), Player.RED);
@@ -43,11 +43,11 @@ public class DeltaWorldLayoutStrategy implements WorldLayoutStrategy {
 	      for ( int c = 0; c < GameConstants.WORLDSIZE; c++ ) {
 	        char tileChar = line.charAt(c);
 	        String type = "error";
-	        if ( tileChar == 'O' ) { type = GameConstants.OCEANS; }
-	        if ( tileChar == 'P' ) { type = GameConstants.PLAINS; }
+	        if ( tileChar == '.' ) { type = GameConstants.OCEANS; }
+	        if ( tileChar == 'o' ) { type = GameConstants.PLAINS; }
 	        if ( tileChar == 'M' ) { type = GameConstants.MOUNTAINS; }
-	        if ( tileChar == 'F' ) { type = GameConstants.FOREST; }
-	        if ( tileChar == 'H' ) { type = GameConstants.HILLS; }
+	        if ( tileChar == 'f' ) { type = GameConstants.FOREST; }
+	        if ( tileChar == 'h' ) { type = GameConstants.HILLS; }
 	        
 	        tileArray[r][c] = new TileImpl(new Position(r,c), type);
 	      }
