@@ -8,12 +8,15 @@ import hotciv.common.GameImpl;
 import hotciv.common.TileImpl;
 import hotciv.common.UnitImpl;
 import hotciv.common.Utility;
+import hotciv.factories.AlphaCivFactory;
 import hotciv.factories.EpsilonCivFactory;
 import hotciv.framework.*;
+import hotciv.stub.ObserverStub;
 import hotciv.variants.EpsilonAttackStrategy;
 import hotciv.variants.EpsilonWinnerStrategy;
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 /** Skeleton class for EpsilonCiv test cases
@@ -36,10 +39,13 @@ public class TestEpsilonCiv {
 
 	String[] worldLayout;
 	private Game game;
+	private GameObserver obs;
 	/** Fixture for alphaciv testing. */
 	@Before
 	public void setUp() {
-		game = new GameStubForAttackTesting();
+		game = new GameImpl(new AlphaCivFactory());
+		obs = new ObserverStub();
+		game.addObserver(obs);
 	}
 	
 	@Test

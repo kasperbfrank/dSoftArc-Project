@@ -3,8 +3,10 @@ package hotciv.test;
 import hotciv.common.CityImpl;
 import hotciv.common.GameImpl;
 import hotciv.common.UnitImpl;
+import hotciv.factories.AlphaCivFactory;
 import hotciv.factories.DeltaCivFactory;
 import hotciv.framework.*;
+import hotciv.stub.ObserverStub;
 import hotciv.variants.AlphaActionStrategy;
 import hotciv.variants.AlphaAgingStrategy;
 import hotciv.variants.AlphaWinnerStrategy;
@@ -32,15 +34,15 @@ import static org.junit.Assert.*;
  */
 public class TestDeltaCiv {
 
+	String[] worldLayout;
 	private Game game;
-	
-	// String[] Defining the world map where P = PLAINS, O = OCEAN, M = MOUNTAINS, F = FOREST, H = HILLS.
-	
-	
-	/** Fixture for deltaciv testing. */
+	private GameObserver obs;
+	/** Fixture for alphaciv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(new DeltaCivFactory());
+		game = new GameImpl(new AlphaCivFactory());
+		obs = new ObserverStub();
+		game.addObserver(obs);
 	}
 	
 	@Test

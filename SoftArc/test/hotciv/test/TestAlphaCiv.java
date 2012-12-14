@@ -5,12 +5,14 @@ import hotciv.common.GameImpl;
 import hotciv.common.UnitImpl;
 import hotciv.factories.AlphaCivFactory;
 import hotciv.framework.*;
+import hotciv.stub.ObserverStub;
 import hotciv.variants.AlphaActionStrategy;
 import hotciv.variants.AlphaAgingStrategy;
 import hotciv.variants.AlphaWinnerStrategy;
 import hotciv.variants.AlphaWorldLayoutStrategy;
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 /** Skeleton class for AlphaCiv test cases
@@ -33,10 +35,13 @@ public class TestAlphaCiv {
 
 	String[] worldLayout;
 	private Game game;
+	private GameObserver obs;
 	/** Fixture for alphaciv testing. */
 	@Before
 	public void setUp() {
 		game = new GameImpl(new AlphaCivFactory());
+		obs = new ObserverStub();
+		game.addObserver(obs);
 	}
 
 	/**

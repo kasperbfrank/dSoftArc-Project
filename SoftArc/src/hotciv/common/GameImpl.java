@@ -34,8 +34,7 @@ public class GameImpl implements Game {
 	private Iterator<Player> playerIterator;
 	private int age = -4000;
 	private Player winner;
-	private int round = 0;
-
+	
 	//Position.
 	private Unit[][] unitArray = new Unit[GameConstants.WORLDSIZE][GameConstants.WORLDSIZE];
 	private Tile[][] tileArray;
@@ -47,11 +46,11 @@ public class GameImpl implements Game {
 	private WorldLayoutStrategy worldLayoutStrategy;
 	private AttackStrategy attackStrategy;
 	
-	private HotCivFactory factory;
+	private ArrayList<GameObserver> obs;
 	
 	public GameImpl(HotCivFactory factory){
 		
-		this.factory = factory;
+		this.obs = new ArrayList<GameObserver>();
 		
 		this.agingStrategy = factory.createAgingStrategy();
 		this.winnerStrategy = factory.createWinnerStrategy();
@@ -127,6 +126,11 @@ public class GameImpl implements Game {
 					c.setOwner(playerInTurn);
 					winner = this.winnerStrategy.getWinner(this);
 				}
+				for(GameObserver observer : obs) {
+			        observer.worldChangedAt(from);
+			        observer.worldChangedAt(to);
+			    }
+				
 				return true;
 			}
 		}
@@ -142,8 +146,6 @@ public class GameImpl implements Game {
 			playerIterator = playerList.iterator();
 			playerInTurn = playerIterator.next();
 			
-			round++;
-
 			age = agingStrategy.doAging(this.age);
 
 			winner = winnerStrategy.getWinner(this);
@@ -157,6 +159,9 @@ public class GameImpl implements Game {
 				}
 			}
 		}
+		for(GameObserver observer : obs) {
+	        observer.turnEnds(playerInTurn, age);
+	    }
 	}
 
 	public void changeWorkForceFocusInCityAt( Position p, String balance ) {}
@@ -198,6 +203,10 @@ public class GameImpl implements Game {
 			for(Position pos : pArray){
 				if(this.getUnitAt(pos) == null){
 					this.insertUnitAtPosition(pos, u);
+					
+					for(GameObserver observer : obs) {
+				        observer.worldChangedAt(pos);
+				    }
 				}
 			}
 		}
@@ -232,16 +241,25 @@ public class GameImpl implements Game {
 	
 	public void insertUnitAtPosition(Position p, Unit u){
 		this.unitArray[p.getRow()][p.getColumn()] = u;
+		for(GameObserver observer : obs) {
+	        observer.worldChangedAt(p);
+	    }
 	}
 	
 	@Override
 	public void deleteUnitAtPosition(Position p) {
 		this.unitArray[p.getColumn()][p.getRow()] = null;
+		for(GameObserver observer : obs) {
+	        observer.worldChangedAt(p);
+	    }
 	}
 
 	public void insertCityAtPosition(Position p, Player player) {
 		cityArray[p.getRow()][p.getColumn()] = new CityImpl(player);
 		unitArray[p.getRow()][p.getColumn()] = null;
+		for(GameObserver observer : obs) {
+	        observer.worldChangedAt(p);
+	    }
 	}
 
 	@Override
@@ -262,13 +280,14 @@ public class GameImpl implements Game {
 
 	@Override
 	public void addObserver(GameObserver observer) {
-		// TODO Auto-generated method stub
-		
+		obs.add(observer);
 	}
 
 	@Override
 	public void setTileFocus(Position position) {
-		// TODO Auto-generated method stub
+		for(GameObserver observer : obs) {
+	        observer.tileFocusChangedAt(position);
+	    }
 		
 	}	
 }

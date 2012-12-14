@@ -3,14 +3,17 @@ package hotciv.test;
 import hotciv.common.CityImpl;
 import hotciv.common.GameImpl;
 import hotciv.common.UnitImpl;
+import hotciv.factories.AlphaCivFactory;
 import hotciv.factories.GammaCivFactory;
 import hotciv.framework.*;
+import hotciv.stub.ObserverStub;
 import hotciv.variants.AlphaAgingStrategy;
 import hotciv.variants.AlphaWinnerStrategy;
 import hotciv.variants.AlphaWorldLayoutStrategy;
 import hotciv.variants.GammaActionStrategy;
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 /** Skeleton class for GammaCiv test cases
@@ -33,10 +36,13 @@ public class TestGammaCiv {
 
 	String[] worldLayout;
 	private Game game;
-	/** Fixture for GammaCiv testing. */
+	private GameObserver obs;
+	/** Fixture for alphaciv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(new GammaCivFactory());
+		game = new GameImpl(new AlphaCivFactory());
+		obs = new ObserverStub();
+		game.addObserver(obs);
 	}
 
 	@Test

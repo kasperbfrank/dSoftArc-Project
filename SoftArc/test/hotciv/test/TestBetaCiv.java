@@ -3,14 +3,17 @@ package hotciv.test;
 import hotciv.common.CityImpl;
 import hotciv.common.GameImpl;
 import hotciv.common.UnitImpl;
+import hotciv.factories.AlphaCivFactory;
 import hotciv.factories.BetaCivFactory;
 import hotciv.framework.*;
+import hotciv.stub.ObserverStub;
 import hotciv.variants.AlphaActionStrategy;
 import hotciv.variants.AlphaWorldLayoutStrategy;
 import hotciv.variants.BetaAgingStrategy;
 import hotciv.variants.BetaWinnerStrategy;
 
 import org.junit.*;
+
 import static org.junit.Assert.*;
 
 /** Skeleton class for BetaCiv test cases
@@ -33,10 +36,13 @@ public class TestBetaCiv {
 	
 	String[] worldLayout;
 	private Game game;
-	/** Fixture for betaCiv testing. */
+	private GameObserver obs;
+	/** Fixture for alphaciv testing. */
 	@Before
 	public void setUp() {
-		game = new GameImpl(new BetaCivFactory());
+		game = new GameImpl(new AlphaCivFactory());
+		obs = new ObserverStub();
+		game.addObserver(obs);
 	}
 
 	// Aging Tests

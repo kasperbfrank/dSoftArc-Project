@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.Random;
 
 import hotciv.common.CityImpl;
+import hotciv.common.GameImpl;
+import hotciv.factories.AlphaCivFactory;
 import hotciv.framework.AttackStrategy;
 import hotciv.framework.City;
 import hotciv.framework.Game;
@@ -15,6 +17,7 @@ import hotciv.framework.Player;
 import hotciv.framework.Position;
 import hotciv.framework.Tile;
 import hotciv.framework.Unit;
+import hotciv.stub.ObserverStub;
 import hotciv.variants.BetaWinnerStrategy;
 import hotciv.variants.EpsilonWinnerStrategy;
 import hotciv.variants.ZetaWinnerStrategy;
@@ -42,10 +45,13 @@ public class TestZetaCiv {
 
 	String[] worldLayout;
 	private Game game;
+	private GameObserver obs;
 	/** Fixture for alphaciv testing. */
 	@Before
 	public void setUp() {
-		game = new GameStubForWinnerAndAttackStrategyTesting();
+		game = new GameImpl(new AlphaCivFactory());
+		obs = new ObserverStub();
+		game.addObserver(obs);
 	}
 	
 	@Test
