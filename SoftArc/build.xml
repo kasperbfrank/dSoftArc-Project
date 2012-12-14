@@ -1,0 +1,140 @@
+<!-- Build file for HotCiv project.
+
+   Modified for the dSoftArk course 2010.
+
+   This source code is from the book 
+     "Flexible, Reliable Software:
+       Using Patterns and Agile Development"
+     published 2010 by CRC Press.
+   Author: 
+     Henrik B Christensen 
+     Computer Science Department
+     Aarhus University
+   
+   This source code is provided WITHOUT ANY WARRANTY either 
+   expressed or implied. You may study, use, modify, and 
+   distribute it for non-commercial purposes. For any 
+   commercial use, see http://www.baerbak.com/
+-->
+<project name="HotCiv" default="help" basedir=".">
+    
+  <property name="sourceDirectory" value="src"/>
+  <property name="testSourceDirectory" value="test"/>
+  <property name="buildDirectory" value="build"/>
+  <property name="javadocDirectory" value="javadoc"/>
+  <property name="resource" value="resource"/>
+
+  <property name="junitJar" value="lib/junit-4.4.jar"/>
+  <property name="minidrawJar" value="lib/minidraw.jar"/>
+  <property name="fractalJar" value="lib/fractal.jar"/>
+
+  <path id="classPath">
+    <pathelement location="${buildDirectory}"/>
+    <pathelement location="${minidrawJar}"/>
+  	<pathelement location="${fractalJar}"/>
+  	<pathelement location="${junitJar}"/>
+  </path>
+
+  <target name="help">
+    <echo>
+HotCiv build management.
+  Targets:
+    buildSrc:      Builds production code.
+    clean:         Removes all bytecode.
+    javadoc:       Generate JavaDoc.
+
+    show:          Test MapView
+    text:          Test TextFigure
+    city:          Test CityFigure
+
+  dSoftArk Targets:
+    update:        Test partial CivDrawing implementation
+                     (and partial solution for FRS 36.38)
+    </echo>
+  </target>
+
+  <target name="clean">
+    <delete dir="${buildDirectory}"/>
+    <delete dir="${javadocDirectory}"/>
+  </target>
+
+  <target name="prepare">
+    <mkdir dir="${buildDirectory}"/>
+    <mkdir dir="${javadocDirectory}"/>
+  </target>
+
+  <target name="buildSrc" depends="prepare">
+    <javac srcdir="${sourceDirectory}"
+      destdir="${buildDirectory}">
+      <classpath refid="classPath"/>
+    </javac>
+  </target>
+
+  <target name="buildTest" depends="buildSrc">
+    <javac srcdir="${testSourceDirectory}"
+      destdir="${buildDirectory}">
+      <classpath refid="classPath"/>
+    </javac>
+  </target>
+
+  <target name="copyResource" depends="prepare">
+    <copy todir="${buildDirectory}\${resource}" >
+      <fileset dir="${resource}">
+	<include name="*.gif"/>
+      </fileset>
+    </copy>
+  </target>
+
+  <target name="buildAll" depends="buildSrc,buildTest,copyResource"/>
+  
+
+  <!-- run visual testing application -->
+  <target name="show" depends="buildAll">
+    <java fork="yes" classname="hotciv.visual.ShowWorld">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <target name="text" depends="buildAll">
+    <java fork="yes" classname="hotciv.visual.ShowText">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <target name="city" depends="buildAll">
+    <java fork="yes" classname="hotciv.visual.ShowCity">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <!-- dSoftArk targets -->
+  <target name="update" depends="buildAll">
+    <java fork="yes" classname="hotciv.visual.TestPartialDrawing">
+      <classpath>
+	<path refid="classPath"/>
+      </classpath>
+    </java>
+  </target>
+
+  <!-- generate javadoc -->
+  <target name="javadoc" depends="prepare">
+    <javadoc
+      packagenames="hotciv.*"
+      destdir="${javadocDirectory}"
+      sourcepath="${sourceDirectory}"
+      windowtitle="HotCiv system">
+      
+      <classpath refid="classPath"/>
+    </javadoc>
+    <echo>
+JavaDoc available in directory ${javadocDirectory}/index.html.
+    </echo>
+  </target>
+  
+</project>
