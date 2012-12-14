@@ -258,5 +258,17 @@ public class GameImpl implements Game {
 	public void incrementBattlesWon(Player player) {
 		int won = this.getBattlesWon().get(player).intValue();
 		battlesWon.put(player, won + 1);
+	}
+
+	@Override
+	public void addObserver(GameObserver observer) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void setTileFocus(Position position) {
+		// TODO Auto-generated method stub
+		
 	}	
 }

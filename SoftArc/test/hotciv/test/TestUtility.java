@@ -239,6 +239,16 @@ class GameStubForBattleTesting implements Game {
 	public void incrementBattlesWon(Player player) {
 		
 	}
+	@Override
+	public void addObserver(GameObserver observer) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void setTileFocus(Position position) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	
 }
