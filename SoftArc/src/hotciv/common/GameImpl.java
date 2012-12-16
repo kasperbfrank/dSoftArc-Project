@@ -126,8 +126,8 @@ public class GameImpl implements Game {
 					c.setOwner(playerInTurn);
 					winner = this.winnerStrategy.getWinner(this);
 				}
+				
 				for(GameObserver observer : obs) {
-			        observer.worldChangedAt(from);
 			        observer.worldChangedAt(to);
 			    }
 				
@@ -241,22 +241,17 @@ public class GameImpl implements Game {
 	
 	public void insertUnitAtPosition(Position p, Unit u){
 		this.unitArray[p.getRow()][p.getColumn()] = u;
-		for(GameObserver observer : obs) {
-	        observer.worldChangedAt(p);
-	    }
 	}
 	
 	@Override
 	public void deleteUnitAtPosition(Position p) {
-		this.unitArray[p.getColumn()][p.getRow()] = null;
-		for(GameObserver observer : obs) {
-	        observer.worldChangedAt(p);
-	    }
+		this.unitArray[p.getRow()][p.getColumn()] = null;
 	}
 
 	public void insertCityAtPosition(Position p, Player player) {
 		cityArray[p.getRow()][p.getColumn()] = new CityImpl(player);
 		unitArray[p.getRow()][p.getColumn()] = null;
+		
 		for(GameObserver observer : obs) {
 	        observer.worldChangedAt(p);
 	    }

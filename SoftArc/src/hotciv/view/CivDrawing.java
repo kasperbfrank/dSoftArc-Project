@@ -83,6 +83,7 @@ public class CivDrawing extends StandardDrawing
       for ( int c = 0; c < GameConstants.WORLDSIZE; c++ ) {
         p = new Position(r,c);
         Unit unit = game.getUnitAt(p);
+        City city = game.getCityAt(p);
         if ( unit != null ) {
           String type = unit.getTypeString();
           // convert the unit's Position to (x,y) coordinates
@@ -97,6 +98,11 @@ public class CivDrawing extends StandardDrawing
           // this list that is iterated by the
           // graphics rendering algorithms
           super.add(unitFigure);
+        }
+        if(city != null){
+        	Point point = new Point( GfxConstants.getXFromColumn(p.getColumn()),
+                    GfxConstants.getYFromRow(p.getRow()) );
+        	super.add(new CityFigure(city, point));
         }
       }
     }

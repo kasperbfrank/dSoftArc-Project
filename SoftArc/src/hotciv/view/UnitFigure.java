@@ -30,6 +30,7 @@ public class UnitFigure extends ImageFigure {
 
   @Override
   public void draw(Graphics g) {
+	  
     g.drawImage(fImage, fDisplayBox.x, 
         fDisplayBox.y - GfxConstants.UNIT_OFFSET_Y, 
         fDisplayBox.width, fDisplayBox.height, null);

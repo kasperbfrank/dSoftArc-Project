@@ -157,6 +157,17 @@ public class TestAlphaCiv {
 
 		assertFalse("Should not be able to move anything but units", game.moveUnit(from, to));
 	}
+	
+	@Test
+	public void shouldHaveNoUnitAtFrom(){
+		Unit u = new UnitImpl(Player.RED, GameConstants.ARCHER, GameConstants.ARCHER_DEFENSIVE_STRENGTH, GameConstants.ARCHER_ATTACKING_STRENGTH);
+
+		Position to = new Position(3,1);
+		Position from = new Position(2,0);
+
+		game.moveUnit(from, to);
+		assertNull("Should have no unit at from: ", game.getUnitAt(from));
+	}
 
 	/**
 	 * Attacking tests.

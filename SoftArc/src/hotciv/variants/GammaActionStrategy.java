@@ -16,9 +16,9 @@ public class GammaActionStrategy implements ActionStrategy {
 		if(unit.getTypeString().equals(GameConstants.ARCHER)){
 			//Cast fortify/cancel fortify
 			if (unit.getDefensiveStrength() > GameConstants.ARCHER_DEFENSIVE_STRENGTH) {
-				game.insertUnitAtPosition(p, new UnitImpl(game.getPlayerInTurn(), unit.getTypeString(), GameConstants.ARCHER_DEFENSIVE_STRENGTH, GameConstants.ARCHER_ATTACKING_STRENGTH));
+				game.insertUnitAtPosition(p, new UnitImpl(game.getPlayerInTurn(), GameConstants.ARCHER, GameConstants.ARCHER_DEFENSIVE_STRENGTH, GameConstants.ARCHER_ATTACKING_STRENGTH));
 			} else {
-				game.insertUnitAtPosition(p, new UnitImpl(game.getPlayerInTurn(), unit.getTypeString(), GameConstants.ARCHER_DEFENSIVE_STRENGTH * 2, GameConstants.ARCHER_ATTACKING_STRENGTH));
+				game.insertUnitAtPosition(p, new UnitImpl(game.getPlayerInTurn(), GameConstants.ARCHER, GameConstants.ARCHER_DEFENSIVE_STRENGTH * 2, GameConstants.ARCHER_ATTACKING_STRENGTH));
 			}
 		}else if(unit.getTypeString().equals(GameConstants.SETTLER)){
 			//Build city at unit position

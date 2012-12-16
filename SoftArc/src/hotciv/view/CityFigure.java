@@ -16,6 +16,7 @@ public class CityFigure extends ImageFigure {
     city = c;
   }
   public void draw(Graphics g) {
+	  
     // draw background color
     g.setColor(GfxConstants.getColorForPlayer(city.getOwner()));
     g.fillRect( position.x+1, position.y+1, 

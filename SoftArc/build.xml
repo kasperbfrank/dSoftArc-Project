@@ -121,6 +121,14 @@ HotCiv build management.
       </classpath>
     </java>
   </target>
+	
+  <target name="moveUnit" depends="buildAll">
+    <java fork="yes" classname="hotciv.visual.TestMoving">
+      <classpath>
+	    <path refid="classPath"/>
+      </classpath>
+	</java>
+  </target>
 
   <!-- generate javadoc -->
   <target name="javadoc" depends="prepare">
