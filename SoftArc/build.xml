@@ -122,7 +122,7 @@ HotCiv build management.
     </java>
   </target>
 	
-  <target name="moveUnit" depends="buildAll">
+  <target name="hotCiv" depends="buildAll">
     <java fork="yes" classname="hotciv.visual.TestMoving">
       <classpath>
 	    <path refid="classPath"/>
